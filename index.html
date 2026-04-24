@@ -49,14 +49,20 @@
   a { text-decoration: none; color: inherit; }
 
   /* Glassmorphism */
-  .glass { background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05); }
+  .glass { 
+    background: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(20px) saturate(180%); 
+    -webkit-backdrop-filter: blur(20px) saturate(180%); 
+    border: 1px solid rgba(255, 255, 255, 0.6); 
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05); 
+  }
 
   /* HEADER */
   header { position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.4); }
   .header-container { max-width: 1440px; margin: 0 auto; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
   
   .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; flex-shrink: 0; }
-  .logo-svg-container { width: 50px; height: 40px; position: relative; animation: floatLogo 4s ease-in-out infinite; }
+  .logo-svg-container { width: 45px; height: 35px; position: relative; animation: floatLogo 4s ease-in-out infinite; }
   @keyframes floatLogo {
     0%, 100% { transform: translateY(0px); filter: drop-shadow(0 5px 5px rgba(0,122,255,0.2)); }
     50% { transform: translateY(-4px); filter: drop-shadow(0 15px 15px rgba(0,122,255,0.4)); }
@@ -75,10 +81,9 @@
 
   /* ── DYNAMIC HERO SECTION ── */
   .hero { overflow: hidden; margin: 2rem auto; max-width: 1350px; border-radius: var(--radius-lg); width: 95%; }
-  .hero-container { padding: 4rem; display: flex; align-items: center; justify-content: space-between; gap: 3rem; min-height: 450px; }
+  .hero-container { padding: 4rem; display: flex; align-items: center; justify-content: space-between; gap: 3rem; min-height: 400px; }
   .hero-text { flex: 1; max-width: 600px; }
   
-  /* Text Animation Classes */
   .hero-text h2 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px; }
   .hero-text h2 span { background: linear-gradient(90deg, #007aff, #00c6ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .hero-text p { font-size: 1.15rem; color: var(--text-muted); }
@@ -89,7 +94,8 @@
     100% { opacity: 1; transform: translateY(0); }
   }
 
-  .hero-slider { flex: 1; position: relative; height: 350px; display: flex; align-items: center; justify-content: center; }
+  /* Fixed Hero Slider */
+  .hero-slider { flex: 1; position: relative; height: 350px; width: 100%; display: flex; align-items: center; justify-content: center; }
   .slide-img { position: absolute; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15)); opacity: 0; transform: scale(0.95); transition: opacity 0.8s ease, transform 0.8s ease; }
   .slide-img.active { opacity: 1; transform: scale(1); }
 
@@ -103,14 +109,27 @@
   .filter-list li:hover { background: rgba(0, 122, 255, 0.1); color: var(--primary); }
   .filter-list li.active { background: var(--primary); color: white; font-weight: 700; }
 
-  /* PRODUCT GRID */
+  /* FIXED PRODUCT GRID */
   .grid-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
   .grid-header h3 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; }
   
   .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
   .card { border-radius: var(--radius-lg); overflow: hidden; transition: all 0.3s ease; cursor: pointer; display: flex; flex-direction: column; }
-  .card-img-container { width: 100%; height: 200px; padding: 1.5rem; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.4); border-bottom: 1px solid rgba(255,255,255,0.5); }
-  .card-img-container img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.5s; }
+  
+  /* Critical fix for card image overflow */
+  .card-img-container { 
+    width: 100%; height: 220px; 
+    padding: 1.5rem; 
+    display: flex; align-items: center; justify-content: center; 
+    background: rgba(255,255,255,0.4); 
+    border-bottom: 1px solid rgba(255,255,255,0.5); 
+    position: relative;
+  }
+  .card-img-container img { 
+    width: 100%; height: 100%; 
+    object-fit: contain; 
+    transition: transform 0.5s; 
+  }
   .card:hover .card-img-container img { transform: scale(1.08); }
 
   .card-info { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
@@ -138,12 +157,12 @@
   .author-info { margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1rem; font-weight: 700; font-size: 0.9rem; }
 
   /* MODALS */
-  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(10px); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
   .modal-overlay.active { display: flex; }
-  .modal-content { width: 100%; max-width: 900px; border-radius: var(--radius-lg); overflow: hidden; position: relative; max-height: 95vh; overflow-y: auto; }
+  .modal-content { width: 100%; max-width: 900px; border-radius: var(--radius-lg); overflow: hidden; position: relative; max-height: 95vh; overflow-y: auto; background: white;}
   .modal-close { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.1); border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 1.2rem; z-index: 10; }
   
-  .auth-box { max-width: 400px; padding: 2.5rem; text-align: center; margin: auto; }
+  .auth-box { max-width: 400px; padding: 2.5rem; text-align: center; margin: auto; background: white;}
   .input-group { margin-bottom: 1rem; text-align: left; }
   .input-group input { width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); outline: none; transition: 0.3s; }
   .input-group input:focus { border-color: var(--primary); }
@@ -151,37 +170,45 @@
   
   .google-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: white; border: 1px solid rgba(0,0,0,0.1); padding: 1rem; border-radius: 12px; font-weight: 600; }
 
-  #productModal .modal-content { display: grid; grid-template-columns: 1fr 1fr; }
-  .modal-gallery { padding: 2rem; background: rgba(255,255,255,0.7); text-align: center; }
+  #productModal .modal-content { display: grid; grid-template-columns: 1fr 1fr; background: white;}
+  .modal-gallery { padding: 2rem; background: #f8fafc; text-align: center; }
   .modal-main-img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 1rem; }
   .modal-thumbnails { display: flex; gap: 10px; justify-content: center; }
   .thumb { width: 60px; height: 60px; border-radius: 12px; cursor: pointer; object-fit: cover; border: 2px solid transparent; }
   .thumb.active { border-color: var(--primary); }
   
-  .modal-details { padding: 2.5rem; display: flex; flex-direction: column; }
+  .modal-details { padding: 2.5rem; display: flex; flex-direction: column; background: white;}
   .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.5rem 0; }
-  .spec-box { background: rgba(255,255,255,0.6); padding: 0.8rem; border-radius: 12px; }
+  .spec-box { background: #f1f5f9; padding: 0.8rem; border-radius: 12px; }
   .order-whatsapp-btn { background: var(--whatsapp); color: white; padding: 1rem; border-radius: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; transition: transform 0.2s;}
   .order-whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4);}
 
-  /* ── MOBILE RESPONSIVENESS ── */
+  /* ── MOBILE RESPONSIVENESS & PERFORMANCE FIXES ── */
   @media (max-width: 900px) {
+    /* Kill heavy animations to stop mobile hanging */
+    body { animation: none; background: #f4f6f8; }
+    .bg-blob { display: none; }
+    .glass { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background: #ffffff !important; box-shadow: 0 4px 6px rgba(0,0,0,0.05) !important;}
+
     .header-container { padding: 1rem; gap: 1rem; justify-content: space-between; }
     .search-container { order: 3; max-width: 100%; flex-basis: 100%; margin: 0; }
     .contact-badge { display: none; }
     
-    .hero-container { padding: 2rem; flex-direction: column; text-align: center; }
+    .hero-container { padding: 2rem 1rem; flex-direction: column; text-align: center; min-height: auto;}
     .hero-text h2 { font-size: 2.2rem; }
-    .hero-slider { height: 200px; width: 100%; }
+    .hero-slider { height: 220px; min-height: 220px; width: 100%; margin-top: 1rem;}
+    .slide-img { max-height: 220px; }
 
     .main-layout { grid-template-columns: 1fr; padding: 0 1rem; margin: 1rem auto; gap: 1.5rem; }
     .sidebar-block { padding: 1rem; }
     .sidebar-title { margin-bottom: 0.5rem; }
     .filter-list { flex-direction: row; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
     .filter-list::-webkit-scrollbar { display: none; }
-    .filter-list li { padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); }
+    .filter-list li { padding: 0.5rem 1rem; background: #f1f5f9; }
 
+    /* Fix product grid specifically for mobile */
     .product-grid { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); }
+    .card-img-container { height: 200px; padding: 1rem;}
 
     #productModal .modal-content { grid-template-columns: 1fr; display: flex; flex-direction: column; }
     .modal-details { padding: 1.5rem; }
@@ -287,7 +314,7 @@
   </section>
 
   <div class="modal-overlay" id="productModal" onclick="closeModal(event, 'productModal')">
-    <div class="modal-content glass">
+    <div class="modal-content">
       <button class="modal-close" onclick="document.getElementById('productModal').classList.remove('active')">✕</button>
       <div class="modal-gallery">
         <img id="mMainImg" class="modal-main-img" src="" alt="Laptop Image">
@@ -307,7 +334,7 @@
   </div>
 
   <div class="modal-overlay" id="loginModal" onclick="closeModal(event, 'loginModal')">
-    <div class="modal-content auth-box glass">
+    <div class="modal-content auth-box">
       <button class="modal-close" onclick="document.getElementById('loginModal').classList.remove('active')">✕</button>
       <h2>Sign In</h2>
       <p>Create an account or log in to leave reviews.</p>
@@ -333,22 +360,22 @@
   </div>
 
   <div class="modal-overlay" id="dashboardModal" onclick="closeModal(event, 'dashboardModal')">
-    <div class="modal-content auth-box glass" style="max-width: 500px;">
+    <div class="modal-content auth-box" style="max-width: 500px;">
       <button class="modal-close" onclick="document.getElementById('dashboardModal').classList.remove('active')">✕</button>
       <h2 style="margin-bottom: 0.5rem;">My Dashboard</h2>
       <p id="dashEmail" style="color: var(--primary); font-weight: 700; margin-bottom: 2rem;">user@email.com</p>
       
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
-        <div style="background: rgba(255,255,255,0.5); padding: 1.5rem; border-radius: 16px;">
+        <div style="background: #f1f5f9; padding: 1.5rem; border-radius: 16px;">
           <h3 style="font-size: 2rem; color: var(--primary);">0</h3>
           <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">ORDERS</span>
         </div>
-        <div style="background: rgba(255,255,255,0.5); padding: 1.5rem; border-radius: 16px;">
+        <div style="background: #f1f5f9; padding: 1.5rem; border-radius: 16px;">
           <h3 style="font-size: 2rem; color: var(--whatsapp);" id="dashReviewCount">0</h3>
           <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">REVIEWS</span>
         </div>
       </div>
-      <button class="btn-full" style="background: rgba(0,0,0,0.1); color: var(--text-main);" onclick="logout()">Sign Out</button>
+      <button class="btn-full" style="background: #e2e8f0; color: var(--text-main);" onclick="logout()">Sign Out</button>
     </div>
   </div>
 
@@ -376,16 +403,11 @@ let currentSlide = 0;
 
 function initHeroSlider() {
   const sliderContainer = document.getElementById('dynamicHeroSlider');
-  
-  // Inject images into DOM once
   sliderContainer.innerHTML = heroContent.map((slide, index) => 
     `<img class="slide-img ${index === 0 ? 'active' : ''}" id="heroImg-${index}" src="${slide.img}" alt="Hero Image">`
   ).join('');
   
-  // Show first text
   updateHeroSlide();
-
-  // Change slide every 5 seconds
   setInterval(() => {
     currentSlide = (currentSlide + 1) % heroContent.length;
     updateHeroSlide();
@@ -396,9 +418,8 @@ function updateHeroSlide() {
   const textContainer = document.getElementById('dynamicHeroText');
   const currentContent = heroContent[currentSlide];
 
-  // Reset text animation by removing and re-adding the class
   textContainer.classList.remove('fade-in-up');
-  void textContainer.offsetWidth; // Trigger reflow to restart animation
+  void textContainer.offsetWidth; 
   
   textContainer.innerHTML = `
     <h2>${currentContent.title}</h2>
@@ -406,15 +427,11 @@ function updateHeroSlide() {
   `;
   textContainer.classList.add('fade-in-up');
 
-  // Update images
   heroContent.forEach((_, index) => {
     const img = document.getElementById(`heroImg-${index}`);
     if(img) {
-      if(index === currentSlide) {
-        img.classList.add('active');
-      } else {
-        img.classList.remove('active');
-      }
+      if(index === currentSlide) img.classList.add('active');
+      else img.classList.remove('active');
     }
   });
 }
@@ -435,7 +452,7 @@ const formatCurrency = (num) => new Intl.NumberFormat('en-PK', { style: 'currenc
 
 // ── INIT ──
 window.onload = () => {
-  initHeroSlider(); // Start the animated slider
+  initHeroSlider(); 
 
   const savedUser = localStorage.getItem('rm_currentUser');
   if(savedUser) { currentUser = savedUser; updateAuthUI(); }
