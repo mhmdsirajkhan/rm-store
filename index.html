@@ -3,527 +3,968 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>RM Store | Premium Laptops</title>
+<title>RM Store | Compare Prices in Pakistan</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #007aff;
-    --primary-hover: #0056b3;
-    --text-main: #1d1d1f;
-    --text-muted: #86868b;
+    --primary: #00a651;
+    --primary-dark: #007a3c;
+    --primary-light: #e8f8f0;
+    --accent: #ff4444;
+    --accent-orange: #ff7700;
+    --text-main: #1a1a2e;
+    --text-muted: #6b7280;
+    --text-light: #9ca3af;
+    --bg: #f4f6f8;
+    --bg-white: #ffffff;
+    --border: #e5e7eb;
     --whatsapp: #25D366;
-    --whatsapp-hover: #1ebd5c;
-    --radius-lg: 24px;
-    --radius-md: 16px;
+    --radius-lg: 12px;
+    --radius-md: 8px;
+    --radius-sm: 6px;
+    --shadow: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-hover: 0 8px 24px rgba(0,0,0,0.12);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  
-  body { 
-    color: var(--text-main); 
-    font-family: 'Inter', -apple-system, sans-serif; 
-    line-height: 1.5; 
-    overflow-x: hidden;
-    background: linear-gradient(-45deg, #f8fafc, #e0f2fe, #dbeafe, #f1f5f9);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  .bg-blob { position: fixed; border-radius: 50%; filter: blur(80px); z-index: -1; opacity: 0.5; animation: blobMove 10s infinite alternate ease-in-out; }
-  .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #bfdbfe; }
-  .blob-2 { bottom: -10%; right: -10%; width: 60vw; height: 60vw; background: #e9d5ff; animation-delay: -5s; }
-
-  @keyframes blobMove {
-    0% { transform: scale(1) translate(0, 0); }
-    100% { transform: scale(1.1) translate(20px, 20px); }
-  }
-
-  button { cursor: pointer; font-family: inherit; }
+  body { color: var(--text-main); font-family: 'Inter', -apple-system, sans-serif; line-height: 1.5; overflow-x: hidden; background: var(--bg); -webkit-font-smoothing: antialiased; }
+  button { cursor: pointer; font-family: inherit; border: none; }
   a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  img { max-width: 100%; }
 
-  /* Glassmorphism */
-  .glass { 
-    background: rgba(255, 255, 255, 0.7); 
-    backdrop-filter: blur(20px) saturate(180%); 
-    -webkit-backdrop-filter: blur(20px) saturate(180%); 
-    border: 1px solid rgba(255, 255, 255, 0.6); 
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05); 
-  }
+  /* ── TOP ANNOUNCEMENT BAR ── */
+  .announcement-bar { background: var(--primary); color: white; text-align: center; padding: 0.45rem 1rem; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.2px; }
+  .announcement-bar span { opacity: 0.85; margin: 0 1rem; }
 
-  /* HEADER */
-  header { position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.4); }
-  .header-container { max-width: 1440px; margin: 0 auto; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
-  
-  .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; flex-shrink: 0; }
-  .logo-svg-container { width: 45px; height: 35px; position: relative; animation: floatLogo 4s ease-in-out infinite; }
-  @keyframes floatLogo {
-    0%, 100% { transform: translateY(0px); filter: drop-shadow(0 5px 5px rgba(0,122,255,0.2)); }
-    50% { transform: translateY(-4px); filter: drop-shadow(0 15px 15px rgba(0,122,255,0.4)); }
-  }
-  .logo-text h1 { font-size: 1.4rem; font-weight: 900; letter-spacing: -1px; line-height: 1; background: linear-gradient(90deg, #007aff, #00c6ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .logo-text span { font-size: 0.6rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+  /* ── HEADER ── */
+  .site-header { background: white; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 200; }
+  .header-top { max-width: 1400px; margin: 0 auto; padding: 0.8rem 1.5rem; display: flex; align-items: center; gap: 1.5rem; }
 
-  .search-container { flex: 1; min-width: 250px; max-width: 500px; position: relative; }
-  .search-container input { width: 100%; padding: 0.8rem 1.2rem 0.8rem 2.8rem; border: 1px solid rgba(255,255,255,0.8); border-radius: 20px; background: rgba(255,255,255,0.5); font-size: 0.95rem; outline: none; transition: all 0.3s; }
-  .search-container input:focus { background: rgba(255,255,255,0.9); border-color: var(--primary); box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15); }
-  .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); width: 18px; height: 18px; }
+  .logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .logo-icon { width: 42px; height: 42px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .logo-icon svg { width: 26px; height: 26px; fill: white; }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-text .brand { font-size: 1.3rem; font-weight: 900; color: var(--primary); letter-spacing: -0.5px; line-height: 1; }
+  .logo-text .tagline { font-size: 0.62rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; }
 
-  .header-actions { display: flex; align-items: center; gap: 1rem; }
-  .contact-badge { background: rgba(255,255,255,0.8); color: var(--text-main); padding: 0.6rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,0.5); white-space: nowrap; }
-  .auth-btn { background: var(--primary); color: white; padding: 0.6rem 1.2rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem; border: none; transition: 0.3s; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .search-wrap { flex: 1; max-width: 580px; position: relative; }
+  .search-wrap input { width: 100%; padding: 0.7rem 3rem 0.7rem 1.1rem; border: 2px solid var(--border); border-radius: 8px; font-size: 0.9rem; outline: none; transition: border-color 0.2s; background: #f9fafb; }
+  .search-wrap input:focus { border-color: var(--primary); background: white; }
+  .search-wrap button { position: absolute; right: 0; top: 0; bottom: 0; width: 44px; background: var(--primary); border-radius: 0 8px 8px 0; display: flex; align-items: center; justify-content: center; }
+  .search-wrap button svg { width: 18px; height: 18px; stroke: white; fill: none; }
 
-  /* ── DYNAMIC HERO SECTION ── */
-  .hero { overflow: hidden; margin: 2rem auto; max-width: 1350px; border-radius: var(--radius-lg); width: 95%; }
-  .hero-container { padding: 4rem; display: flex; align-items: center; justify-content: space-between; gap: 3rem; min-height: 400px; }
-  .hero-text { flex: 1; max-width: 600px; }
-  
-  .hero-text h2 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px; }
-  .hero-text h2 span { background: linear-gradient(90deg, #007aff, #00c6ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .hero-text p { font-size: 1.15rem; color: var(--text-muted); }
-  
-  .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-  @keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
+  .header-actions { display: flex; align-items: center; gap: 0.8rem; margin-left: auto; }
+  .header-action-btn { display: flex; flex-direction: column; align-items: center; gap: 2px; background: none; border: none; color: var(--text-muted); font-size: 0.7rem; font-weight: 600; cursor: pointer; padding: 0.4rem; transition: color 0.2s; }
+  .header-action-btn:hover { color: var(--primary); }
+  .header-action-btn svg { width: 22px; height: 22px; stroke: currentColor; fill: none; }
+  .action-count { background: var(--accent); color: white; font-size: 0.6rem; font-weight: 700; padding: 1px 5px; border-radius: 10px; line-height: 1.4; }
+  .phone-badge { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: var(--text-main); white-space: nowrap; padding: 0.5rem 0.9rem; border: 1.5px solid var(--border); border-radius: 8px; }
+  .phone-badge svg { width: 16px; height: 16px; stroke: var(--primary); fill: none; }
+  .login-btn { background: var(--primary); color: white; padding: 0.55rem 1.2rem; border-radius: 8px; font-weight: 700; font-size: 0.85rem; transition: background 0.2s; }
+  .login-btn:hover { background: var(--primary-dark); }
 
-  /* Fixed Hero Slider */
-  .hero-slider { flex: 1; position: relative; height: 350px; width: 100%; display: flex; align-items: center; justify-content: center; }
-  .slide-img { position: absolute; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15)); opacity: 0; transform: scale(0.95); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .slide-img.active { opacity: 1; transform: scale(1); }
+  /* ── CATEGORY NAV ── */
+  .cat-nav { background: var(--primary); }
+  .cat-nav-inner { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; gap: 0; overflow-x: auto; scrollbar-width: none; }
+  .cat-nav-inner::-webkit-scrollbar { display: none; }
+  .cat-nav-item { display: flex; align-items: center; gap: 6px; padding: 0.65rem 1.2rem; color: rgba(255,255,255,0.9); font-size: 0.84rem; font-weight: 600; white-space: nowrap; cursor: pointer; transition: background 0.2s; border-radius: 0; position: relative; }
+  .cat-nav-item:hover, .cat-nav-item.active { background: rgba(255,255,255,0.15); color: white; }
+  .cat-nav-item svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+  .cat-nav-separator { width: 1px; height: 20px; background: rgba(255,255,255,0.2); flex-shrink: 0; }
 
-  /* LAYOUT */
-  .main-layout { max-width: 1440px; margin: 2rem auto; padding: 0 2rem; display: grid; grid-template-columns: 260px 1fr; gap: 3rem; }
-  
-  .sidebar-block { border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; }
-  .sidebar-title { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
-  .filter-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
-  .filter-list li { padding: 0.6rem 0.8rem; border-radius: 12px; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: 0.2s; white-space: nowrap; }
-  .filter-list li:hover { background: rgba(0, 122, 255, 0.1); color: var(--primary); }
-  .filter-list li.active { background: var(--primary); color: white; font-weight: 700; }
+  /* ── HERO BANNER ── */
+  .hero-section { max-width: 1400px; margin: 1.2rem auto; padding: 0 1.5rem; display: grid; grid-template-columns: 1fr 300px; gap: 1rem; }
+  .hero-main { border-radius: var(--radius-lg); overflow: hidden; position: relative; min-height: 320px; }
+  .hero-slide { position: absolute; inset: 0; display: flex; align-items: center; padding: 2.5rem 3rem; opacity: 0; transition: opacity 0.7s ease; }
+  .hero-slide.active { opacity: 1; }
+  .hero-slide-text { flex: 1; z-index: 2; }
+  .hero-slide-tag { display: inline-block; background: rgba(255,255,255,0.2); color: white; font-size: 0.72rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 30px; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+  .hero-slide-text h2 { font-size: 2.2rem; font-weight: 800; color: white; line-height: 1.2; margin-bottom: 0.8rem; }
+  .hero-slide-text p { font-size: 0.95rem; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; }
+  .hero-cta { background: white; color: var(--primary); padding: 0.7rem 1.8rem; border-radius: 8px; font-weight: 800; font-size: 0.9rem; display: inline-block; transition: transform 0.2s; }
+  .hero-cta:hover { transform: translateY(-2px); }
+  .hero-slide-img { flex: 0 0 240px; display: flex; align-items: center; justify-content: center; }
+  .hero-slide-img img { max-height: 220px; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2)); }
+  .hero-dots { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 5; }
+  .hero-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: background 0.2s, width 0.2s; border: none; }
+  .hero-dot.active { background: white; width: 22px; border-radius: 4px; }
 
-  /* FIXED PRODUCT GRID */
-  .grid-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
-  .grid-header h3 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; }
-  
-  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-  .card { border-radius: var(--radius-lg); overflow: hidden; transition: all 0.3s ease; cursor: pointer; display: flex; flex-direction: column; }
-  
-  /* Critical fix for card image overflow */
-  .card-img-container { 
-    width: 100%; height: 220px; 
-    padding: 1.5rem; 
-    display: flex; align-items: center; justify-content: center; 
-    background: rgba(255,255,255,0.4); 
-    border-bottom: 1px solid rgba(255,255,255,0.5); 
-    position: relative;
-  }
-  .card-img-container img { 
-    width: 100%; height: 100%; 
-    object-fit: contain; 
-    transition: transform 0.5s; 
-  }
-  .card:hover .card-img-container img { transform: scale(1.08); }
+  .hero-sidebar { display: flex; flex-direction: column; gap: 1rem; }
+  .hero-side-card { flex: 1; border-radius: var(--radius-lg); overflow: hidden; position: relative; padding: 1.5rem; display: flex; flex-direction: column; justify-content: flex-end; min-height: 150px; }
+  .hero-side-card h3 { font-size: 1rem; font-weight: 800; color: white; margin-bottom: 0.3rem; }
+  .hero-side-card p { font-size: 0.78rem; color: rgba(255,255,255,0.85); margin-bottom: 0.8rem; }
+  .hero-side-card .mini-cta { background: rgba(255,255,255,0.25); color: white; padding: 0.4rem 1rem; border-radius: 6px; font-weight: 700; font-size: 0.78rem; display: inline-block; }
+  .hero-side-card .side-img { position: absolute; right: 0; top: 0; bottom: 0; width: 45%; object-fit: cover; opacity: 0.3; }
 
-  .card-info { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
-  .card-brand { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.3rem; }
-  .card-title { font-size: 1.1rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.5rem; }
-  .card-specs { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
-  .card-bottom { margin-top: auto; display: flex; align-items: center; justify-content: space-between; }
-  .price { font-size: 1.3rem; font-weight: 800; color: var(--text-main); }
-  .view-btn { background: rgba(0,0,0,0.05); border: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem; transition: background 0.3s, color 0.3s;}
-  .card:hover .view-btn { background: var(--primary); color: white;}
+  /* ── SECTION WRAPPER ── */
+  .section-wrap { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .section-title { font-size: 1.2rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+  .section-title::before { content: ''; display: block; width: 4px; height: 22px; background: var(--primary); border-radius: 2px; }
+  .section-title .badge { background: var(--accent); color: white; font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; text-transform: uppercase; }
+  .see-all { font-size: 0.82rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 4px; }
 
-  /* REVIEWS */
-  .reviews-section { max-width: 1440px; margin: 4rem auto; padding: 0 2rem; }
-  .reviews-header { text-align: center; margin-bottom: 2rem; }
-  .reviews-header h2 { font-size: 2.2rem; font-weight: 800; }
-  
-  .review-form { max-width: 600px; margin: 0 auto 3rem auto; padding: 2rem; border-radius: var(--radius-lg); display: none; }
-  .review-form.active { display: block; }
-  .review-form textarea { width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); background: rgba(255,255,255,0.8); resize: none; margin-bottom: 1rem; outline: none; font-family: inherit; }
-  
-  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-  .review-card { padding: 1.5rem; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 0.8rem; }
-  .stars { color: #f59e0b; font-size: 1.2rem; }
-  .review-text { font-size: 0.95rem; font-style: italic; color: var(--text-main); flex: 1; }
-  .author-info { margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1rem; font-weight: 700; font-size: 0.9rem; }
+  /* ── POPULAR CATEGORIES ── */
+  .categories-section { background: white; padding: 1.5rem 0; margin: 1rem 0; }
+  .cat-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 0.5rem; }
+  .cat-item { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; padding: 1rem 0.5rem; border-radius: var(--radius-md); cursor: pointer; transition: background 0.2s; text-align: center; }
+  .cat-item:hover { background: var(--primary-light); }
+  .cat-item:hover .cat-icon { border-color: var(--primary); }
+  .cat-icon { width: 60px; height: 60px; border-radius: 50%; background: #f3f4f6; border: 2px solid transparent; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s; font-size: 1.6rem; }
+  .cat-item span { font-size: 0.75rem; font-weight: 600; color: var(--text-main); }
 
-  /* MODALS */
-  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
+  /* ── BRANDS ── */
+  .brands-section { background: white; padding: 1.5rem 0; margin: 1rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .brands-title { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+  .brands-row { display: flex; align-items: center; gap: 0.5rem; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
+  .brands-row::-webkit-scrollbar { display: none; }
+  .brand-chip { display: flex; align-items: center; justify-content: center; padding: 0.5rem 1.2rem; border: 1.5px solid var(--border); border-radius: 40px; font-size: 0.82rem; font-weight: 700; color: var(--text-muted); cursor: pointer; white-space: nowrap; transition: all 0.2s; flex-shrink: 0; }
+  .brand-chip:hover, .brand-chip.active { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+
+  /* ── DEALS STRIP ── */
+  .deals-strip { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1rem 0; }
+  .deals-strip-inner { display: flex; align-items: center; gap: 2rem; overflow-x: auto; scrollbar-width: none; }
+  .deals-strip-inner::-webkit-scrollbar { display: none; }
+  .deal-chip { display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.07); border-radius: 10px; padding: 0.6rem 1rem; flex-shrink: 0; cursor: pointer; transition: background 0.2s; }
+  .deal-chip:hover { background: rgba(255,255,255,0.12); }
+  .deal-chip img { width: 50px; height: 50px; object-fit: contain; border-radius: 6px; background: white; padding: 4px; }
+  .deal-chip-text .deal-name { font-size: 0.78rem; font-weight: 600; color: white; }
+  .deal-chip-text .deal-price { font-size: 0.85rem; font-weight: 800; color: #4ade80; }
+  .deal-chip-text .deal-discount { font-size: 0.7rem; color: #f87171; font-weight: 700; }
+  .deals-strip-label { font-size: 0.7rem; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 1px; background: var(--accent); padding: 0.3rem 0.7rem; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
+
+  /* ── PRODUCT GRID ── */
+  .product-section { background: white; border-radius: var(--radius-lg); padding: 1.5rem; margin: 1rem 0; }
+  .prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1rem; }
+  .prod-card { border: 1.5px solid var(--border); border-radius: var(--radius-md); overflow: hidden; cursor: pointer; transition: all 0.25s; background: white; display: flex; flex-direction: column; position: relative; }
+  .prod-card:hover { border-color: var(--primary); box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+  .prod-badge { position: absolute; top: 8px; left: 8px; z-index: 2; font-size: 0.65rem; font-weight: 800; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; }
+  .badge-hot { background: var(--accent); color: white; }
+  .badge-new { background: var(--primary); color: white; }
+  .badge-sale { background: var(--accent-orange); color: white; }
+  .wishlist-btn { position: absolute; top: 8px; right: 8px; z-index: 2; width: 30px; height: 30px; border-radius: 50%; background: white; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
+  .wishlist-btn:hover { background: #fff0f0; border-color: var(--accent); }
+  .wishlist-btn svg { width: 15px; height: 15px; stroke: var(--text-muted); fill: none; }
+  .wishlist-btn.active svg { stroke: var(--accent); fill: var(--accent); }
+  .prod-img-wrap { width: 100%; height: 180px; padding: 1rem; display: flex; align-items: center; justify-content: center; background: #f9fafb; }
+  .prod-img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.3s; }
+  .prod-card:hover .prod-img-wrap img { transform: scale(1.06); }
+  .prod-info { padding: 0.9rem; flex: 1; display: flex; flex-direction: column; }
+  .prod-brand { font-size: 0.68rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.2rem; }
+  .prod-name { font-size: 0.88rem; font-weight: 600; color: var(--text-main); line-height: 1.4; margin-bottom: 0.3rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .prod-rating { display: flex; align-items: center; gap: 4px; margin-bottom: 0.5rem; }
+  .stars-small { color: #f59e0b; font-size: 0.75rem; letter-spacing: -1px; }
+  .rating-count { font-size: 0.7rem; color: var(--text-light); }
+  .prod-price-row { margin-top: auto; }
+  .prod-price { font-size: 1.1rem; font-weight: 800; color: var(--text-main); }
+  .prod-old-price { font-size: 0.78rem; color: var(--text-light); text-decoration: line-through; margin-left: 4px; }
+  .prod-discount-pct { font-size: 0.72rem; font-weight: 700; color: var(--accent); }
+  .compare-price-label { font-size: 0.68rem; color: var(--primary); font-weight: 600; display: flex; align-items: center; gap: 4px; margin-top: 0.3rem; }
+  .prod-action-row { padding: 0.75rem 0.9rem; border-top: 1px solid var(--border); display: flex; gap: 0.5rem; }
+  .btn-compare { flex: 1; background: var(--primary-light); color: var(--primary); font-size: 0.75rem; font-weight: 700; padding: 0.45rem; border-radius: 6px; transition: background 0.2s; }
+  .btn-compare:hover { background: var(--primary); color: white; }
+  .btn-detail { flex: 1; background: var(--primary); color: white; font-size: 0.75rem; font-weight: 700; padding: 0.45rem; border-radius: 6px; transition: background 0.2s; }
+  .btn-detail:hover { background: var(--primary-dark); }
+
+  /* ── FULL PRODUCT PAGE (MAIN LAYOUT) ── */
+  .shop-layout { max-width: 1400px; margin: 1.5rem auto; padding: 0 1.5rem; display: grid; grid-template-columns: 240px 1fr; gap: 1.5rem; }
+  .sidebar { display: flex; flex-direction: column; gap: 1rem; }
+  .sidebar-card { background: white; border-radius: var(--radius-md); border: 1px solid var(--border); padding: 1rem; }
+  .sb-title { font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .sb-list li { padding: 0.45rem 0.6rem; border-radius: 6px; font-size: 0.85rem; cursor: pointer; transition: 0.15s; font-weight: 500; }
+  .sb-list li:hover { background: var(--primary-light); color: var(--primary); }
+  .sb-list li.active { background: var(--primary); color: white; font-weight: 700; }
+  .shop-main { background: white; border-radius: var(--radius-md); border: 1px solid var(--border); padding: 1.5rem; }
+  .shop-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 0.8rem; }
+  .shop-toolbar h3 { font-size: 1.1rem; font-weight: 800; }
+  .sort-select { padding: 0.45rem 0.8rem; border: 1px solid var(--border); border-radius: 6px; font-size: 0.82rem; outline: none; background: white; cursor: pointer; }
+
+  /* ── PRICE COMPARISON TABLE ── */
+  .compare-table { width: 100%; margin: 1rem 0; border-collapse: collapse; }
+  .compare-table th { background: var(--primary-light); color: var(--primary); font-size: 0.75rem; font-weight: 700; padding: 0.5rem 0.8rem; text-align: left; }
+  .compare-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); font-size: 0.82rem; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table .lowest { color: var(--primary); font-weight: 700; }
+  .compare-table .store-name { font-weight: 600; }
+  .lowest-badge { background: var(--primary); color: white; font-size: 0.6rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-left: 6px; }
+
+  /* ── PRODUCT MODAL ── */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
   .modal-overlay.active { display: flex; }
-  .modal-content { width: 100%; max-width: 900px; border-radius: var(--radius-lg); overflow: hidden; position: relative; max-height: 95vh; overflow-y: auto; background: white;}
-  .modal-close { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.1); border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 1.2rem; z-index: 10; }
-  
-  .auth-box { max-width: 400px; padding: 2.5rem; text-align: center; margin: auto; background: white;}
-  .input-group { margin-bottom: 1rem; text-align: left; }
-  .input-group input { width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); outline: none; transition: 0.3s; }
-  .input-group input:focus { border-color: var(--primary); }
-  .btn-full { width: 100%; background: var(--primary); color: white; padding: 1rem; border: none; border-radius: 12px; font-weight: 700; margin-bottom: 1rem; }
-  
-  .google-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: white; border: 1px solid rgba(0,0,0,0.1); padding: 1rem; border-radius: 12px; font-weight: 600; }
-
-  #productModal .modal-content { display: grid; grid-template-columns: 1fr 1fr; background: white;}
-  .modal-gallery { padding: 2rem; background: #f8fafc; text-align: center; }
-  .modal-main-img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 1rem; }
-  .modal-thumbnails { display: flex; gap: 10px; justify-content: center; }
-  .thumb { width: 60px; height: 60px; border-radius: 12px; cursor: pointer; object-fit: cover; border: 2px solid transparent; }
+  .modal-box { background: white; border-radius: 16px; width: 100%; max-width: 920px; max-height: 92vh; overflow-y: auto; position: relative; }
+  .modal-close { position: absolute; top: 12px; right: 12px; background: #f3f4f6; border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 1.1rem; z-index: 10; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .modal-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .modal-gallery { padding: 1.5rem; background: #f9fafb; display: flex; flex-direction: column; align-items: center; }
+  .modal-main-img { width: 100%; max-height: 260px; object-fit: contain; margin-bottom: 1rem; }
+  .modal-thumbnails { display: flex; gap: 8px; }
+  .thumb { width: 58px; height: 58px; border-radius: 8px; cursor: pointer; object-fit: cover; border: 2px solid transparent; transition: border-color 0.2s; }
   .thumb.active { border-color: var(--primary); }
-  
-  .modal-details { padding: 2.5rem; display: flex; flex-direction: column; background: white;}
-  .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.5rem 0; }
-  .spec-box { background: #f1f5f9; padding: 0.8rem; border-radius: 12px; }
-  .order-whatsapp-btn { background: var(--whatsapp); color: white; padding: 1rem; border-radius: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; transition: transform 0.2s;}
-  .order-whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4);}
+  .modal-details { padding: 2rem; display: flex; flex-direction: column; }
+  .modal-brand { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
+  .modal-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; line-height: 1.3; }
+  .modal-price-main { font-size: 1.8rem; font-weight: 900; color: var(--primary); margin-bottom: 0.3rem; }
+  .modal-old-price { font-size: 0.9rem; color: var(--text-light); text-decoration: line-through; margin-bottom: 1rem; }
+  .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 1rem 0; }
+  .spec-box { background: #f9fafb; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--border); }
+  .spec-box .spec-key { font-size: 0.68rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+  .spec-box .spec-val { font-size: 0.88rem; font-weight: 700; margin-top: 2px; }
+  .modal-action-row { display: flex; flex-direction: column; gap: 0.7rem; margin-top: auto; padding-top: 1rem; }
+  .btn-whatsapp { background: var(--whatsapp); color: white; padding: 0.85rem; border-radius: 10px; font-weight: 800; font-size: 0.92rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: opacity 0.2s; }
+  .btn-whatsapp:hover { opacity: 0.9; }
+  .btn-call { background: #f3f4f6; color: var(--text-main); padding: 0.75rem; border-radius: 10px; font-weight: 700; font-size: 0.88rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.2s; }
+  .btn-call:hover { background: #e5e7eb; }
 
-  /* ── MOBILE RESPONSIVENESS & PERFORMANCE FIXES ── */
-  @media (max-width: 900px) {
-    /* Kill heavy animations to stop mobile hanging */
-    body { animation: none; background: #f4f6f8; }
-    .bg-blob { display: none; }
-    .glass { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background: #ffffff !important; box-shadow: 0 4px 6px rgba(0,0,0,0.05) !important;}
+  /* ── AUTH MODAL ── */
+  .auth-modal-box { max-width: 400px; padding: 2.5rem; background: white; border-radius: 16px; }
+  .auth-modal-box h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .auth-modal-box p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.5rem; }
+  .input-group { margin-bottom: 1rem; }
+  .input-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.35rem; }
+  .input-group input { width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: 8px; outline: none; font-size: 0.9rem; transition: border-color 0.2s; }
+  .input-group input:focus { border-color: var(--primary); }
+  .btn-full { width: 100%; background: var(--primary); color: white; padding: 0.85rem; border: none; border-radius: 8px; font-weight: 700; font-size: 0.92rem; margin-bottom: 1rem; cursor: pointer; }
+  .btn-full:hover { background: var(--primary-dark); }
+  .google-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: white; border: 1.5px solid var(--border); padding: 0.75rem; border-radius: 8px; font-weight: 600; font-size: 0.88rem; cursor: pointer; }
 
-    .header-container { padding: 1rem; gap: 1rem; justify-content: space-between; }
-    .search-container { order: 3; max-width: 100%; flex-basis: 100%; margin: 0; }
-    .contact-badge { display: none; }
-    
-    .hero-container { padding: 2rem 1rem; flex-direction: column; text-align: center; min-height: auto;}
-    .hero-text h2 { font-size: 2.2rem; }
-    .hero-slider { height: 220px; min-height: 220px; width: 100%; margin-top: 1rem;}
-    .slide-img { max-height: 220px; }
+  /* ── NEWSLETTER ── */
+  .newsletter-section { background: var(--primary); padding: 3rem 1.5rem; text-align: center; margin: 2rem 0 0; }
+  .newsletter-section h2 { font-size: 1.8rem; font-weight: 800; color: white; margin-bottom: 0.5rem; }
+  .newsletter-section p { color: rgba(255,255,255,0.85); font-size: 0.95rem; margin-bottom: 1.5rem; }
+  .newsletter-form { max-width: 480px; margin: 0 auto; display: flex; gap: 0.5rem; }
+  .newsletter-form input { flex: 1; padding: 0.8rem 1rem; border-radius: 8px; border: none; outline: none; font-size: 0.9rem; }
+  .newsletter-form button { background: var(--text-main); color: white; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 0.88rem; white-space: nowrap; }
 
-    .main-layout { grid-template-columns: 1fr; padding: 0 1rem; margin: 1rem auto; gap: 1.5rem; }
-    .sidebar-block { padding: 1rem; }
-    .sidebar-title { margin-bottom: 0.5rem; }
-    .filter-list { flex-direction: row; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
-    .filter-list::-webkit-scrollbar { display: none; }
-    .filter-list li { padding: 0.5rem 1rem; background: #f1f5f9; }
+  /* ── REVIEWS ── */
+  .reviews-section { background: white; padding: 2rem 0; margin: 0; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+  .review-card { background: #f9fafb; border: 1px solid var(--border); padding: 1.2rem; border-radius: var(--radius-md); }
+  .stars { color: #f59e0b; font-size: 1rem; margin-bottom: 0.5rem; }
+  .review-text { font-size: 0.88rem; color: var(--text-main); line-height: 1.6; font-style: italic; }
+  .author-info { margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--border); font-weight: 700; font-size: 0.82rem; }
+  .review-form { max-width: 580px; margin: 1rem auto 0; display: none; background: #f9fafb; border: 1px solid var(--border); padding: 1.5rem; border-radius: var(--radius-md); }
+  .review-form.active { display: block; }
+  .review-form textarea { width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border); background: white; resize: none; margin-bottom: 0.8rem; outline: none; font-family: inherit; font-size: 0.88rem; }
 
-    /* Fix product grid specifically for mobile */
-    .product-grid { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); }
-    .card-img-container { height: 200px; padding: 1rem;}
+  /* ── FOOTER ── */
+  footer { background: #1a1a2e; color: #9ca3af; padding: 3rem 0 0; }
+  .footer-grid { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem 2rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2rem; }
+  .footer-brand .brand-name { font-size: 1.4rem; font-weight: 900; color: white; margin-bottom: 0.5rem; }
+  .footer-brand p { font-size: 0.82rem; line-height: 1.7; margin-bottom: 1rem; }
+  .footer-social { display: flex; gap: 0.6rem; }
+  .social-icon { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; }
+  .social-icon:hover { background: var(--primary); }
+  .social-icon svg { width: 16px; height: 16px; fill: #9ca3af; }
+  .social-icon:hover svg { fill: white; }
+  .footer-col h4 { font-size: 0.82rem; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.8rem; }
+  .footer-col li { margin-bottom: 0.5rem; }
+  .footer-col li a { font-size: 0.82rem; color: #9ca3af; transition: color 0.2s; }
+  .footer-col li a:hover { color: var(--primary); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 1.2rem 1.5rem; max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  .footer-bottom p { font-size: 0.78rem; color: #6b7280; }
+  .footer-payments { display: flex; gap: 0.5rem; align-items: center; }
+  .pay-badge { background: rgba(255,255,255,0.08); padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; color: #9ca3af; }
 
-    #productModal .modal-content { grid-template-columns: 1fr; display: flex; flex-direction: column; }
-    .modal-details { padding: 1.5rem; }
-    .spec-grid { grid-template-columns: 1fr; }
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .cat-grid { grid-template-columns: repeat(4, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .hero-section { grid-template-columns: 1fr; }
+    .hero-sidebar { flex-direction: row; }
+    .shop-layout { grid-template-columns: 200px 1fr; }
   }
+
+  @media (max-width: 768px) {
+    .announcement-bar span { display: none; }
+    .header-top { padding: 0.7rem 1rem; gap: 0.8rem; }
+    .phone-badge { display: none; }
+    .search-wrap { order: 3; max-width: 100%; flex-basis: 100%; }
+    .header-top { flex-wrap: wrap; }
+    .cat-grid { grid-template-columns: repeat(4, 1fr); }
+    .hero-slide-img { display: none; }
+    .hero-slide-text h2 { font-size: 1.5rem; }
+    .shop-layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .modal-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .prod-grid { grid-template-columns: repeat(2, 1fr); }
+    .newsletter-form { flex-direction: column; }
+    .hero-sidebar { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .cat-grid { grid-template-columns: repeat(4, 1fr); }
+    .prod-grid { grid-template-columns: repeat(2, 1fr); }
+    .cat-icon { width: 48px; height: 48px; font-size: 1.3rem; }
+  }
+
+  /* ── UTILS ── */
+  .fade-in { animation: fadeIn 0.4s ease forwards; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .hide { display: none !important; }
 </style>
 </head>
 <body>
 
-  <div class="bg-blob blob-1"></div>
-  <div class="bg-blob blob-2"></div>
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    🚚 Free Delivery Nationwide on Orders Above Rs. 50,000
+    <span>|</span>
+    💳 Easy Installments Available
+    <span>|</span>
+    📞 Call us: +92 325 2365042
+  </div>
 
-  <header class="glass">
-    <div class="header-container">
-      <div class="logo" onclick="filterBrand('ALL')">
-        <div class="logo-svg-container">
-          <svg viewBox="0 0 100 100" width="100%" height="100%">
-            <defs>
-              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#007aff" />
-                <stop offset="100%" stop-color="#00c6ff" />
-              </linearGradient>
-            </defs>
-            <path d="M 10 75 L 90 75 L 80 85 L 20 85 Z" fill="url(#logoGrad)" opacity="0.9"/>
-            <path d="M 15 25 L 85 25 L 80 70 L 20 70 Z" fill="none" stroke="url(#logoGrad)" stroke-width="5" stroke-linejoin="round"/>
-            <text x="50" y="60" font-family="'Inter', sans-serif" font-weight="900" font-size="34" text-anchor="middle" fill="url(#logoGrad)">RM</text>
-          </svg>
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="header-top">
+      <a href="#" class="logo" onclick="goHome()">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
         </div>
         <div class="logo-text">
-          <h1>RM Store</h1>
-          <span>Premium Tech</span>
+          <span class="brand">RM Store</span>
+          <span class="tagline">Compare Prices in Pakistan</span>
         </div>
-      </div>
-      
-      <div class="search-container">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" id="searchInput" placeholder="Search models, brands..." oninput="executeSearch()">
+      </a>
+
+      <div class="search-wrap">
+        <input type="text" id="searchInput" placeholder="Search mobiles, laptops, tablets…" oninput="executeSearch()">
+        <button onclick="executeSearch()">
+          <svg viewBox="0 0 24 24" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
       </div>
 
       <div class="header-actions">
-        <div class="contact-badge">📞 +92 325 2365042</div>
-        <button class="auth-btn" id="headerAuthBtn" onclick="openAuthModal()">Login</button>
+        <div class="phone-badge">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.85-.93a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.5 16.21Z"/></svg>
+          +92 325 2365042
+        </div>
+        <button class="header-action-btn" onclick="toggleWishlist()">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Wishlist
+        </button>
+        <button class="login-btn" id="headerAuthBtn" onclick="openAuthModal()">Login</button>
       </div>
     </div>
+
+    <!-- CATEGORY NAV -->
+    <nav class="cat-nav">
+      <div class="cat-nav-inner">
+        <div class="cat-nav-item active" onclick="setCategory('ALL', this)">
+          <svg viewBox="0 0 24 24"><path d="M3 3h7v7H3zm11 0h7v7h-7zM3 14h7v7H3zm11 0h7v7h-7z"/></svg>
+          All
+        </div>
+        <div class="cat-nav-separator"></div>
+        <div class="cat-nav-item" onclick="setCategory('Mobile', this)">
+          <svg viewBox="0 0 24 24"><path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM12 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+          Mobiles
+        </div>
+        <div class="cat-nav-separator"></div>
+        <div class="cat-nav-item" onclick="setCategory('Laptop', this)">
+          <svg viewBox="0 0 24 24"><path d="M20 18a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2H0v2h24v-2zM4 6h16v10H4z"/></svg>
+          Laptops
+        </div>
+        <div class="cat-nav-separator"></div>
+        <div class="cat-nav-item" onclick="setCategory('Tablet', this)">
+          <svg viewBox="0 0 24 24"><path d="M19 1H5a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm-7 20a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+          Tablets
+        </div>
+        <div class="cat-nav-separator"></div>
+        <div class="cat-nav-item" onclick="setCategory('Gaming', this)">
+          <svg viewBox="0 0 24 24"><path d="M6 9H4V7H2v2H0v2h2v2h2v-2h2zm11.5-2A1.5 1.5 0 1 0 19 8.5 1.5 1.5 0 0 0 17.5 7zm-3 3A1.5 1.5 0 1 0 16 11.5a1.5 1.5 0 0 0-1.5-1.5zM24 10a7 7 0 0 0-7-7H7a7 7 0 0 0-7 7v.22A5 5 0 0 0 4 15h1.61l1.11 3.33A2 2 0 0 0 8.6 20H9a2 2 0 0 0 1.93-1.48L12 13.76l1.07 4.76A2 2 0 0 0 15 20h.4a2 2 0 0 0 1.89-1.67L18.39 15H20a5 5 0 0 0 4-2z"/></svg>
+          Gaming
+        </div>
+        <div class="cat-nav-separator"></div>
+        <div class="cat-nav-item" onclick="setCategory('Accessory', this)">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Accessories
+        </div>
+        <div class="cat-nav-separator"></div>
+        <div class="cat-nav-item" onclick="setCategory('TV', this)">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+          TVs
+        </div>
+        <div class="cat-nav-separator"></div>
+        <div class="cat-nav-item" onclick="setCategory('Watch', this)">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><polyline points="12 9 12 12 13.5 13.5"/><path d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7.35-3.83A2 2 0 0 1 9.83 1h4.35a2 2 0 0 1 2 1.82l.35 3.83"/></svg>
+          Wearables
+        </div>
+      </div>
+    </nav>
   </header>
 
-  <section class="hero glass">
-    <div class="hero-container">
-      <div class="hero-text" id="dynamicHeroText">
-        </div>
-      <div class="hero-slider" id="dynamicHeroSlider">
-        </div>
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="heroSection">
+    <div class="hero-main" id="heroMain">
+      <!-- Slides injected by JS -->
+    </div>
+    <div class="hero-sidebar">
+      <div class="hero-side-card" style="background: linear-gradient(135deg, #1a1a2e, #16213e);">
+        <h3>Gaming Laptops</h3>
+        <p>RTX 4060 • 144Hz • Up to 32GB RAM</p>
+        <span class="mini-cta" onclick="setCategory('Gaming', null)">Shop Now →</span>
+      </div>
+      <div class="hero-side-card" style="background: linear-gradient(135deg, #00a651, #007a3c);">
+        <h3>🔥 Hot Deals</h3>
+        <p>Up to 30% off on selected items</p>
+        <span class="mini-cta" onclick="scrollToDeals()">View Deals →</span>
+      </div>
     </div>
   </section>
 
-  <main class="main-layout">
-    <aside>
-      <div class="sidebar-block glass">
-        <div class="sidebar-title">Categories</div>
-        <ul class="filter-list" id="categoryList">
-          <li class="active" onclick="filterBrand('ALL', this)">All Laptops</li>
-          <li onclick="filterBrand('Apple', this)">Apple</li>
-          <li onclick="filterBrand('HP', this)">HP</li>
-          <li onclick="filterBrand('Dell', this)">Dell</li>
-          <li onclick="filterBrand('Lenovo', this)">Lenovo</li>
-          <li onclick="filterBrand('ASUS', this)">ASUS</li>
-        </ul>
+  <!-- POPULAR CATEGORIES -->
+  <section class="categories-section">
+    <div class="section-wrap">
+      <div class="section-header">
+        <span class="section-title">Popular Categories</span>
       </div>
-
-      <div class="sidebar-block glass">
-        <div class="sidebar-title">Price Range</div>
-        <ul class="filter-list" id="priceList">
-          <li class="active" onclick="filterPrice('ALL', this)">Any Price</li>
-          <li onclick="filterPrice('U100', this)">Under 100k</li>
-          <li onclick="filterPrice('100-200', this)">100k - 200k</li>
-          <li onclick="filterPrice('200-300', this)">200k - 300k</li>
-          <li onclick="filterPrice('300+', this)">Above 300k</li>
-        </ul>
+      <div class="cat-grid">
+        <div class="cat-item" onclick="setCategory('Mobile', null)"><div class="cat-icon">📱</div><span>Mobiles</span></div>
+        <div class="cat-item" onclick="setCategory('Laptop', null)"><div class="cat-icon">💻</div><span>Laptops</span></div>
+        <div class="cat-item" onclick="setCategory('Tablet', null)"><div class="cat-icon">📟</div><span>Tablets</span></div>
+        <div class="cat-item" onclick="setCategory('Gaming', null)"><div class="cat-icon">🎮</div><span>Gaming</span></div>
+        <div class="cat-item" onclick="setCategory('TV', null)"><div class="cat-icon">📺</div><span>Smart TVs</span></div>
+        <div class="cat-item" onclick="setCategory('Watch', null)"><div class="cat-icon">⌚</div><span>Wearables</span></div>
+        <div class="cat-item" onclick="setCategory('Accessory', null)"><div class="cat-icon">🎧</div><span>Accessories</span></div>
+        <div class="cat-item" onclick="setCategory('ALL', null)"><div class="cat-icon">🏷️</div><span>All Deals</span></div>
       </div>
-    </aside>
-
-    <section>
-      <div class="grid-header">
-        <h3 id="sectionTitle">All Laptops</h3>
-      </div>
-      <div class="product-grid" id="productGrid"></div>
-    </section>
-  </main>
-
-  <section class="reviews-section">
-    <div class="reviews-header">
-      <h2>Customer Reviews</h2>
-      <p>Real feedback from our customers.</p>
     </div>
-    
-    <div class="review-form glass" id="reviewFormContainer">
-      <h3 style="margin-bottom: 1rem;">Write a Review</h3>
-      <textarea id="reviewText" rows="4" placeholder="How was your experience with RM Store?"></textarea>
-      <button class="btn-full" onclick="submitReview()">Submit Review</button>
-    </div>
-
-    <div class="reviews-grid" id="reviewsGrid"></div>
   </section>
 
-  <div class="modal-overlay" id="productModal" onclick="closeModal(event, 'productModal')">
-    <div class="modal-content">
-      <button class="modal-close" onclick="document.getElementById('productModal').classList.remove('active')">✕</button>
-      <div class="modal-gallery">
-        <img id="mMainImg" class="modal-main-img" src="" alt="Laptop Image">
-        <div class="modal-thumbnails" id="mThumbnails"></div>
+  <!-- FEATURED BRANDS -->
+  <section class="brands-section">
+    <div class="section-wrap">
+      <div class="brands-title">Shop by Brand</div>
+      <div class="brands-row" id="brandsRow">
+        <div class="brand-chip active" onclick="setBrand('ALL', this)">All Brands</div>
+        <div class="brand-chip" onclick="setBrand('Apple', this)">🍎 Apple</div>
+        <div class="brand-chip" onclick="setBrand('Samsung', this)">Samsung</div>
+        <div class="brand-chip" onclick="setBrand('OnePlus', this)">OnePlus</div>
+        <div class="brand-chip" onclick="setBrand('Xiaomi', this)">Xiaomi</div>
+        <div class="brand-chip" onclick="setBrand('Dell', this)">Dell</div>
+        <div class="brand-chip" onclick="setBrand('HP', this)">HP</div>
+        <div class="brand-chip" onclick="setBrand('Lenovo', this)">Lenovo</div>
+        <div class="brand-chip" onclick="setBrand('ASUS', this)">ASUS</div>
+        <div class="brand-chip" onclick="setBrand('Sony', this)">Sony</div>
+        <div class="brand-chip" onclick="setBrand('TCL', this)">TCL</div>
       </div>
-      <div class="modal-details">
-        <div class="modal-brand" id="mBrand">Brand</div>
-        <h2 class="modal-title" id="mTitle" style="font-size: 1.8rem; margin-bottom: 0.5rem;">Product Title</h2>
-        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;" id="mDesc">Description</p>
-        <div class="price" id="mPrice" style="font-size: 1.8rem; margin-bottom: 1.5rem;">Rs. 0</div>
-        <div class="spec-grid" id="mSpecs"></div>
-        <a href="#" id="mWhatsAppBtn" target="_blank" class="order-whatsapp-btn">
-          Order via WhatsApp
-        </a>
+    </div>
+  </section>
+
+  <!-- HOT DEALS STRIP -->
+  <div class="deals-strip" id="dealsAnchor">
+    <div class="section-wrap">
+      <div class="deals-strip-inner" id="dealsStrip">
+        <span class="deals-strip-label">⚡ Flash Deals</span>
+        <!-- Injected by JS -->
       </div>
     </div>
   </div>
 
-  <div class="modal-overlay" id="loginModal" onclick="closeModal(event, 'loginModal')">
-    <div class="modal-content auth-box">
-      <button class="modal-close" onclick="document.getElementById('loginModal').classList.remove('active')">✕</button>
+  <!-- FEATURED / HOT DEALS PRODUCTS -->
+  <div class="section-wrap" style="margin-top: 1.5rem;">
+    <div class="product-section" id="hotDealsSection">
+      <div class="section-header">
+        <span class="section-title">🔥 Hot Deals <span class="badge">Sale</span></span>
+        <a href="#" class="see-all" onclick="setCategory('ALL', null)">See All →</a>
+      </div>
+      <div class="prod-grid" id="hotDealsGrid"></div>
+    </div>
+  </div>
+
+  <!-- NEW ARRIVALS -->
+  <div class="section-wrap" style="margin-top: 1rem;">
+    <div class="product-section" id="newArrivalsSection">
+      <div class="section-header">
+        <span class="section-title">✨ New Arrivals</span>
+        <a href="#" class="see-all" onclick="setCategory('ALL', null)">See All →</a>
+      </div>
+      <div class="prod-grid" id="newArrivalsGrid"></div>
+    </div>
+  </div>
+
+  <!-- FULL SHOP SECTION -->
+  <div class="shop-layout" id="shopSection">
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="sb-title">Category</div>
+        <ul class="sb-list" id="sidebarCategories">
+          <li class="active" onclick="setCategory('ALL', null)">All Products</li>
+          <li onclick="setCategory('Mobile', null)">📱 Mobiles</li>
+          <li onclick="setCategory('Laptop', null)">💻 Laptops</li>
+          <li onclick="setCategory('Tablet', null)">📟 Tablets</li>
+          <li onclick="setCategory('Gaming', null)">🎮 Gaming</li>
+          <li onclick="setCategory('TV', null)">📺 Smart TVs</li>
+          <li onclick="setCategory('Watch', null)">⌚ Wearables</li>
+          <li onclick="setCategory('Accessory', null)">🎧 Accessories</li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <div class="sb-title">Price Range</div>
+        <ul class="sb-list" id="sidebarPrices">
+          <li class="active" onclick="filterPrice('ALL', this)">Any Price</li>
+          <li onclick="filterPrice('U50', this)">Under Rs. 50,000</li>
+          <li onclick="filterPrice('50-150', this)">Rs. 50k – 150k</li>
+          <li onclick="filterPrice('150-300', this)">Rs. 150k – 300k</li>
+          <li onclick="filterPrice('300+', this)">Above Rs. 300k</li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <div class="sb-title">Brand</div>
+        <ul class="sb-list" id="sidebarBrands">
+          <li class="active" onclick="setBrand('ALL', this)">All Brands</li>
+          <li onclick="setBrand('Apple', this)">Apple</li>
+          <li onclick="setBrand('Samsung', this)">Samsung</li>
+          <li onclick="setBrand('OnePlus', this)">OnePlus</li>
+          <li onclick="setBrand('Xiaomi', this)">Xiaomi</li>
+          <li onclick="setBrand('Dell', this)">Dell</li>
+          <li onclick="setBrand('HP', this)">HP</li>
+          <li onclick="setBrand('Lenovo', this)">Lenovo</li>
+          <li onclick="setBrand('ASUS', this)">ASUS</li>
+          <li onclick="setBrand('Sony', this)">Sony</li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="shop-main">
+      <div class="shop-toolbar">
+        <h3 id="shopTitle">All Products</h3>
+        <div style="display:flex;gap:0.5rem;align-items:center;">
+          <span id="shopCount" style="font-size:0.82rem;color:var(--text-muted);"></span>
+          <select class="sort-select" id="sortSelect" onchange="renderGrid()">
+            <option value="default">Sort: Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name-asc">Name: A–Z</option>
+          </select>
+        </div>
+      </div>
+      <div class="prod-grid" id="mainProductGrid"></div>
+    </div>
+  </div>
+
+  <!-- REVIEWS SECTION -->
+  <section class="reviews-section">
+    <div class="section-wrap">
+      <div class="section-header">
+        <span class="section-title">Customer Reviews</span>
+      </div>
+      <div class="review-form" id="reviewFormContainer">
+        <h4 style="margin-bottom:0.8rem;font-size:1rem;">Write a Review</h4>
+        <textarea id="reviewText" rows="4" placeholder="How was your experience with RM Store?"></textarea>
+        <button class="btn-full" onclick="submitReview()">Submit Review</button>
+      </div>
+      <div class="reviews-grid" id="reviewsGrid"></div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter-section">
+    <h2>Stay Updated on the Best Prices</h2>
+    <p>Subscribe to get alerts on price drops and exclusive deals in Pakistan.</p>
+    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+      <input type="email" placeholder="Enter your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name">RM Store</div>
+        <p>Pakistan's trusted destination to compare prices and buy the latest mobiles, laptops, tablets, and accessories at the best deals.</p>
+        <div class="footer-social">
+          <div class="social-icon"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+          <div class="social-icon"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></div>
+          <div class="social-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+          <div class="social-icon"><svg viewBox="0 0 24 24"><path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7"/></svg></div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Compare Prices</a></li>
+          <li><a href="#">Today's Deals</a></li>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Price Drop Alerts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="#" onclick="setCategory('Mobile',null)">Mobiles</a></li>
+          <li><a href="#" onclick="setCategory('Laptop',null)">Laptops</a></li>
+          <li><a href="#" onclick="setCategory('Tablet',null)">Tablets</a></li>
+          <li><a href="#" onclick="setCategory('Gaming',null)">Gaming</a></li>
+          <li><a href="#" onclick="setCategory('TV',null)">Smart TVs</a></li>
+          <li><a href="#" onclick="setCategory('Watch',null)">Wearables</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">About RM Store</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">How to Order</a></li>
+          <li><a href="#">Return Policy</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+923252365042">📞 +92 325 2365042</a></li>
+          <li><a href="https://wa.me/923252365042">💬 WhatsApp Us</a></li>
+          <li><a href="#">📍 Karachi, Pakistan</a></li>
+          <li><a href="#">✉️ info@rmstore.pk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 RM Store. All rights reserved.</p>
+      <div class="footer-payments">
+        <span class="pay-badge">JazzCash</span>
+        <span class="pay-badge">EasyPaisa</span>
+        <span class="pay-badge">Bank Transfer</span>
+        <span class="pay-badge">Cash on Delivery</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PRODUCT MODAL -->
+  <div class="modal-overlay" id="productModal" onclick="closeModal(event,'productModal')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('productModal').classList.remove('active')">✕</button>
+      <div class="modal-grid" id="modalGrid">
+        <div class="modal-gallery">
+          <img id="mMainImg" class="modal-main-img" src="" alt="Product Image">
+          <div class="modal-thumbnails" id="mThumbnails"></div>
+        </div>
+        <div class="modal-details">
+          <div class="modal-brand" id="mBrand"></div>
+          <h2 class="modal-title" id="mTitle"></h2>
+          <div class="modal-price-main" id="mPrice"></div>
+          <div class="modal-old-price" id="mOldPrice"></div>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem;" id="mDesc"></p>
+          <div class="spec-grid" id="mSpecs"></div>
+          <div id="mCompareSection" style="margin-bottom:1rem;">
+            <div style="font-size:0.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.5rem;">Price Comparison</div>
+            <table class="compare-table" id="mCompareTable"></table>
+          </div>
+          <div class="modal-action-row">
+            <a href="#" id="mWhatsAppBtn" target="_blank" class="btn-whatsapp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              Order via WhatsApp
+            </a>
+            <a href="tel:+923252365042" class="btn-call">
+              📞 Call Us: +92 325 2365042
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTH MODAL -->
+  <div class="modal-overlay" id="loginModal" onclick="closeModal(event,'loginModal')">
+    <div class="auth-modal-box">
+      <button class="modal-close" style="position:absolute;top:12px;right:12px;" onclick="document.getElementById('loginModal').classList.remove('active')">✕</button>
       <h2>Sign In</h2>
-      <p>Create an account or log in to leave reviews.</p>
-      
+      <p>Log in or create an account to submit reviews and save deals.</p>
       <div class="input-group">
-        <input type="email" id="authEmail" placeholder="Email Address">
+        <label>Email Address</label>
+        <input type="email" id="authEmail" placeholder="your@email.com">
       </div>
       <div class="input-group">
-        <input type="password" id="authPass" placeholder="Password">
+        <label>Password</label>
+        <input type="password" id="authPass" placeholder="••••••••">
       </div>
       <button class="btn-full" onclick="executeLogin()">Register / Log In</button>
-      
       <button class="google-btn" onclick="fakeGoogleLogin()">
-        <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-        </svg>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
         Continue with Google
       </button>
     </div>
   </div>
 
-  <div class="modal-overlay" id="dashboardModal" onclick="closeModal(event, 'dashboardModal')">
-    <div class="modal-content auth-box" style="max-width: 500px;">
-      <button class="modal-close" onclick="document.getElementById('dashboardModal').classList.remove('active')">✕</button>
-      <h2 style="margin-bottom: 0.5rem;">My Dashboard</h2>
-      <p id="dashEmail" style="color: var(--primary); font-weight: 700; margin-bottom: 2rem;">user@email.com</p>
-      
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
-        <div style="background: #f1f5f9; padding: 1.5rem; border-radius: 16px;">
-          <h3 style="font-size: 2rem; color: var(--primary);">0</h3>
-          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">ORDERS</span>
+  <!-- DASHBOARD MODAL -->
+  <div class="modal-overlay" id="dashboardModal" onclick="closeModal(event,'dashboardModal')">
+    <div class="auth-modal-box" style="max-width:460px;">
+      <button class="modal-close" style="position:absolute;top:12px;right:12px;" onclick="document.getElementById('dashboardModal').classList.remove('active')">✕</button>
+      <h2>My Dashboard</h2>
+      <p id="dashEmail" style="color:var(--primary);font-weight:700;margin-bottom:1.5rem;"></p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+        <div style="background:#f3f4f6;padding:1.2rem;border-radius:10px;text-align:center;">
+          <div style="font-size:1.8rem;font-weight:900;color:var(--primary);">0</div>
+          <div style="font-size:0.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;">Orders</div>
         </div>
-        <div style="background: #f1f5f9; padding: 1.5rem; border-radius: 16px;">
-          <h3 style="font-size: 2rem; color: var(--whatsapp);" id="dashReviewCount">0</h3>
-          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">REVIEWS</span>
+        <div style="background:#f3f4f6;padding:1.2rem;border-radius:10px;text-align:center;">
+          <div style="font-size:1.8rem;font-weight:900;color:var(--primary);" id="dashReviewCount">0</div>
+          <div style="font-size:0.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;">Reviews</div>
         </div>
       </div>
-      <button class="btn-full" style="background: #e2e8f0; color: var(--text-main);" onclick="logout()">Sign Out</button>
+      <button class="btn-full" style="background:#f3f4f6;color:var(--text-main);" onclick="logout()">Sign Out</button>
     </div>
   </div>
 
 <script>
-// ── SYNCED HERO SLIDER LOGIC ──
-const heroContent = [
-  {
-    img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80',
-    title: 'Unleash your potential with <span>Premium Tech</span>.',
-    desc: "Pakistan's most curated collection of glossy ultrabooks and powerful rigs."
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80',
-    title: 'Dominate the game with <span>Ultimate Power</span>.',
-    desc: 'Experience desktop-class performance on the go with our top-tier gaming rigs and high-refresh displays.'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80',
-    title: 'Elevate your workflow with <span>Sleek Design</span>.',
-    desc: 'Discover edge-to-edge displays and premium craftsmanship tailored for creators and professionals.'
-  }
+// ── INVENTORY DATA ──
+const inventory = [
+  // MOBILES
+  { id: 1,  category: 'Mobile',    brand: 'Apple',   name: 'iPhone 15 Pro Max', price: 389000, oldPrice: 420000, badge: 'hot',  rating: 4.8, reviews: 312, desc: 'A17 Pro chip, titanium design, 48MP camera, Action Button.', images: ['https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80','https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80'], specs: { Chip: 'A17 Pro', RAM: '8GB', Storage: '256GB', Display: '6.7" Super Retina', Camera: '48MP Main' }, priceHistory: [{store:'RM Store',price:389000,note:'Lowest'},{store:'PriceOye',price:399000,note:''},{store:'iShopping',price:405000,note:''}] },
+  { id: 2,  category: 'Mobile',    brand: 'Samsung', name: 'Galaxy S24 Ultra',   price: 349000, oldPrice: 380000, badge: 'sale', rating: 4.7, reviews: 245, desc: 'Snapdragon 8 Gen 3, 200MP camera, built-in S Pen, AI features.', images: ['https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=800&q=80','https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=800&q=80'], specs: { Chip: 'Snapdragon 8 Gen 3', RAM: '12GB', Storage: '256GB', Display: '6.8" Dynamic AMOLED', Camera: '200MP' }, priceHistory: [{store:'RM Store',price:349000,note:'Lowest'},{store:'PriceOye',price:355000,note:''},{store:'iShopping',price:362000,note:''}] },
+  { id: 3,  category: 'Mobile',    brand: 'OnePlus', name: 'OnePlus 12',         price: 139000, oldPrice: 155000, badge: 'sale', rating: 4.6, reviews: 188, desc: 'Snapdragon 8 Gen 3, 50MP Hasselblad camera, 100W charging.', images: ['https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80'], specs: { Chip: 'Snapdragon 8 Gen 3', RAM: '12GB', Storage: '256GB', Display: '6.82" AMOLED 120Hz', Camera: '50MP Hasselblad' }, priceHistory: [{store:'RM Store',price:139000,note:'Lowest'},{store:'iShopping',price:145000,note:''},{store:'DarazPK',price:148000,note:''}] },
+  { id: 4,  category: 'Mobile',    brand: 'Xiaomi',  name: 'Redmi Note 13 Pro',  price: 58000,  oldPrice: 65000,  badge: 'new',  rating: 4.4, reviews: 521, desc: '200MP camera, 5000mAh battery, 67W turbo charging.', images: ['https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?auto=format&fit=crop&w=800&q=80'], specs: { Chip: 'Dimensity 7200', RAM: '8GB', Storage: '256GB', Display: '6.67" AMOLED 120Hz', Camera: '200MP' }, priceHistory: [{store:'RM Store',price:58000,note:'Lowest'},{store:'Daraz',price:61000,note:''},{store:'iShopping',price:63000,note:''}] },
+  { id: 5,  category: 'Mobile',    brand: 'Samsung', name: 'Galaxy A55 5G',      price: 89000,  oldPrice: null,   badge: 'new',  rating: 4.3, reviews: 98,  desc: 'Exynos 1480, triple 50MP camera, IP67 rated.', images: ['https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80'], specs: { Chip: 'Exynos 1480', RAM: '8GB', Storage: '256GB', Display: '6.6" AMOLED 120Hz', Camera: '50MP Triple' }, priceHistory: [{store:'RM Store',price:89000,note:'Lowest'},{store:'Daraz',price:93000,note:''},{store:'iShopping',price:95000,note:''}] },
+
+  // LAPTOPS
+  { id: 6,  category: 'Laptop',    brand: 'Apple',   name: 'MacBook Air M3',    price: 295000, oldPrice: 320000, badge: 'hot',  rating: 4.9, reviews: 176, desc: 'Fanless design, 18-hour battery, ultra-thin chassis with M3 chip.', images: ['https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80','https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Apple M3', RAM: '8GB', Storage: '256GB SSD', Display: '13.6" Retina', Battery: '18hrs' }, priceHistory: [{store:'RM Store',price:295000,note:'Lowest'},{store:'iShopping',price:305000,note:''},{store:'DarazPK',price:312000,note:''}] },
+  { id: 7,  category: 'Laptop',    brand: 'Apple',   name: 'MacBook Pro 14"',   price: 470000, oldPrice: null,   badge: null,   rating: 4.9, reviews: 89,  desc: 'M3 Pro chip with Liquid Retina XDR display, 11-core CPU.', images: ['https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80','https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Apple M3 Pro', RAM: '18GB', Storage: '512GB SSD', Display: '14.2" XDR', Battery: '18hrs' }, priceHistory: [{store:'RM Store',price:470000,note:'Lowest'},{store:'PriceOye',price:482000,note:''},{store:'iShopping',price:490000,note:''}] },
+  { id: 8,  category: 'Laptop',    brand: 'Dell',    name: 'Dell XPS 13 Plus',  price: 340000, oldPrice: 370000, badge: 'sale', rating: 4.5, reviews: 64,  desc: 'Futuristic design, seamless glass touchpad, Intel i7-1360P.', images: ['https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Intel i7-1360P', RAM: '16GB', Storage: '512GB NVMe', Display: '13.4" OLED Touch', Battery: '12hrs' }, priceHistory: [{store:'RM Store',price:340000,note:'Lowest'},{store:'iShopping',price:352000,note:''},{store:'PriceOye',price:358000,note:''}] },
+  { id: 9,  category: 'Laptop',    brand: 'HP',      name: 'HP Spectre x360',   price: 285000, oldPrice: 310000, badge: 'sale', rating: 4.6, reviews: 112, desc: '2-in-1 convertible, OLED display, Intel EVO platform.', images: ['https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Intel i7-1355U', RAM: '16GB', Storage: '512GB SSD', Display: '14" OLED 2.8K', Battery: '17hrs' }, priceHistory: [{store:'RM Store',price:285000,note:'Lowest'},{store:'PriceOye',price:295000,note:''},{store:'iShopping',price:300000,note:''}] },
+  { id: 10, category: 'Laptop',    brand: 'Lenovo',  name: 'ThinkPad X1 Carbon', price: 390000, oldPrice: null,   badge: 'new',  rating: 4.7, reviews: 55,  desc: 'Ultra-light 1kg business laptop, military-grade durability.', images: ['https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Intel i7-1365U', RAM: '16GB', Storage: '1TB SSD', Display: '14" IPS 2.8K', Battery: '15hrs' }, priceHistory: [{store:'RM Store',price:390000,note:'Lowest'},{store:'iShopping',price:402000,note:''}] },
+
+  // GAMING
+  { id: 11, category: 'Gaming',    brand: 'ASUS',    name: 'ROG Zephyrus G14', price: 395000, oldPrice: 430000, badge: 'hot',  rating: 4.8, reviews: 143, desc: 'Ryzen 9, RTX 4060, 2560×1600 165Hz display, 76Wh battery.', images: ['https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80','https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Ryzen 9 7940HS', RAM: '16GB DDR5', Storage: '1TB PCIe', GPU: 'RTX 4060', Display: '14" 165Hz 2.5K' }, priceHistory: [{store:'RM Store',price:395000,note:'Lowest'},{store:'PriceOye',price:408000,note:''},{store:'iShopping',price:415000,note:''}] },
+  { id: 12, category: 'Gaming',    brand: 'ASUS',    name: 'ROG Strix G16',    price: 435000, oldPrice: null,   badge: 'new',  rating: 4.7, reviews: 77,  desc: 'Intel Core i9, RTX 4070, 240Hz FHD display for serious gamers.', images: ['https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Intel i9-13980HX', RAM: '32GB DDR5', Storage: '2TB SSD', GPU: 'RTX 4070', Display: '16" 240Hz FHD' }, priceHistory: [{store:'RM Store',price:435000,note:'Lowest'},{store:'PriceOye',price:448000,note:''}] },
+  { id: 13, category: 'Gaming',    brand: 'Lenovo',  name: 'Legion 5 Pro',     price: 265000, oldPrice: 295000, badge: 'sale', rating: 4.6, reviews: 198, desc: 'Ryzen 7, RTX 4060, 16" 165Hz 2K display, excellent thermals.', images: ['https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Ryzen 7 7745HX', RAM: '16GB DDR5', Storage: '512GB SSD', GPU: 'RTX 4060', Display: '16" 165Hz 2.5K' }, priceHistory: [{store:'RM Store',price:265000,note:'Lowest'},{store:'PriceOye',price:275000,note:''},{store:'iShopping',price:280000,note:''}] },
+
+  // TABLETS
+  { id: 14, category: 'Tablet',    brand: 'Apple',   name: 'iPad Pro M4 11"',  price: 255000, oldPrice: null,   badge: 'new',  rating: 4.9, reviews: 62,  desc: 'Ultra-Retina XDR OLED, Apple M4 chip, thinnest Apple product ever.', images: ['https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=800&q=80'], specs: { Chip: 'Apple M4', RAM: '8GB', Storage: '256GB', Display: '11" Ultra Retina XDR', Connectivity: 'Wi-Fi 6E' }, priceHistory: [{store:'RM Store',price:255000,note:'Lowest'},{store:'iShopping',price:265000,note:''},{store:'PriceOye',price:270000,note:''}] },
+  { id: 15, category: 'Tablet',    brand: 'Samsung', name: 'Galaxy Tab S9+',   price: 175000, oldPrice: 195000, badge: 'sale', rating: 4.7, reviews: 104, desc: '12.4" Dynamic AMOLED 2X, Snapdragon 8 Gen 2, IP68 waterproof.', images: ['https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80'], specs: { Chip: 'Snapdragon 8 Gen 2', RAM: '12GB', Storage: '256GB', Display: '12.4" AMOLED 120Hz', Battery: '10090mAh' }, priceHistory: [{store:'RM Store',price:175000,note:'Lowest'},{store:'PriceOye',price:182000,note:''},{store:'DarazPK',price:189000,note:''}] },
+
+  // SMART TVS
+  { id: 16, category: 'TV',        brand: 'TCL',     name: 'TCL 55" QLED 4K',  price: 95000,  oldPrice: 115000, badge: 'hot',  rating: 4.4, reviews: 289, desc: 'Quantum Dot display, Android TV 11, Dolby Vision & Atmos.', images: ['https://images.unsplash.com/photo-1593359677879-a4bb92f4f24b?auto=format&fit=crop&w=800&q=80'], specs: { Display: '55" QLED 4K', OS: 'Android 11', HDR: 'Dolby Vision', Audio: 'Dolby Atmos', Refresh: '60Hz' }, priceHistory: [{store:'RM Store',price:95000,note:'Lowest'},{store:'DarazPK',price:102000,note:''},{store:'PriceOye',price:108000,note:''}] },
+  { id: 17, category: 'TV',        brand: 'Sony',    name: 'Sony Bravia XR 65"', price: 285000, oldPrice: null,   badge: 'new',  rating: 4.8, reviews: 47,  desc: 'Cognitive Processor XR, OLED display, Google TV built-in.', images: ['https://images.unsplash.com/photo-1593359677879-a4bb92f4f24b?auto=format&fit=crop&w=800&q=80'], specs: { Display: '65" OLED 4K', OS: 'Google TV', HDR: 'Dolby Vision IQ', Audio: '60W Acoustic', Refresh: '120Hz' }, priceHistory: [{store:'RM Store',price:285000,note:'Lowest'},{store:'iShopping',price:295000,note:''}] },
+
+  // WEARABLES
+  { id: 18, category: 'Watch',     brand: 'Apple',   name: 'Apple Watch Series 9', price: 89000, oldPrice: 98000, badge: 'sale', rating: 4.8, reviews: 201, desc: 'S9 SiP chip, Double Tap gesture, Always-On Retina display, health sensors.', images: ['https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80'], specs: { Chip: 'S9 SiP', Display: '45mm Retina', Battery: '18hrs', Sensors: 'ECG, Blood O2', Connectivity: 'GPS + LTE' }, priceHistory: [{store:'RM Store',price:89000,note:'Lowest'},{store:'PriceOye',price:93000,note:''},{store:'iShopping',price:97000,note:''}] },
+  { id: 19, category: 'Watch',     brand: 'Samsung', name: 'Galaxy Watch 6 Classic', price: 65000, oldPrice: 75000, badge: 'sale', rating: 4.5, reviews: 133, desc: 'Rotating bezel, Exynos W930, comprehensive health tracking.', images: ['https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80'], specs: { Chip: 'Exynos W930', Display: '47mm Super AMOLED', Battery: '40hrs', Sensors: 'BioActive, ECG', Connectivity: 'GPS + LTE' }, priceHistory: [{store:'RM Store',price:65000,note:'Lowest'},{store:'DarazPK',price:70000,note:''},{store:'PriceOye',price:72000,note:''}] },
+
+  // ACCESSORIES
+  { id: 20, category: 'Accessory', brand: 'Sony',    name: 'Sony WH-1000XM5',  price: 89000,  oldPrice: 99000,  badge: 'hot',  rating: 4.9, reviews: 445, desc: 'Industry-leading noise cancellation, 30-hour battery life, foldable design.', images: ['https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80'], specs: { Driver: '30mm', Battery: '30hrs', NC: 'Industry Best', Connectivity: 'Bluetooth 5.2', Weight: '250g' }, priceHistory: [{store:'RM Store',price:89000,note:'Lowest'},{store:'PriceOye',price:95000,note:''},{store:'DarazPK',price:98000,note:''}] },
+  { id: 21, category: 'Accessory', brand: 'Apple',   name: 'AirPods Pro 2nd Gen', price: 64000, oldPrice: 72000, badge: 'sale', rating: 4.8, reviews: 387, desc: 'H2 chip, Adaptive Audio, Personalized Spatial Audio, USB-C charging.', images: ['https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=800&q=80'], specs: { Chip: 'Apple H2', Battery: '6hrs (30 case)', NC: 'Active', Connectivity: 'Bluetooth 5.3', Case: 'USB-C' }, priceHistory: [{store:'RM Store',price:64000,note:'Lowest'},{store:'iShopping',price:68000,note:''},{store:'PriceOye',price:70000,note:''}] },
+];
+
+// ── HERO SLIDES ──
+const heroSlides = [
+  { gradient: 'linear-gradient(135deg, #00a651 0%, #007a3c 100%)', tag: 'Best Deal', title: 'iPhone 15 Pro Max', subtitle: 'Starting from Rs. 389,000 — Pakistan\'s Best Price Guaranteed', img: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80', cta: 'Compare Prices', cat: 'Mobile' },
+  { gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', tag: 'Gaming', title: 'ROG Zephyrus G14', subtitle: 'RTX 4060 + Ryzen 9 — The ultimate portable gaming beast', img: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80', cta: 'Shop Gaming', cat: 'Gaming' },
+  { gradient: 'linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%)', tag: 'New Arrival', title: 'Samsung Galaxy S24 Ultra', subtitle: '200MP Camera + S Pen — Up to 30% off Today Only', img: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=800&q=80', cta: 'View Deal', cat: 'Mobile' },
+  { gradient: 'linear-gradient(135deg, #b45309 0%, #92400e 100%)', tag: 'Just In', title: 'MacBook Air M3', subtitle: 'Fanless. 18-Hour Battery. The perfect everyday laptop.', img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80', cta: 'Shop Laptops', cat: 'Laptop' },
 ];
 
 let currentSlide = 0;
-
-function initHeroSlider() {
-  const sliderContainer = document.getElementById('dynamicHeroSlider');
-  sliderContainer.innerHTML = heroContent.map((slide, index) => 
-    `<img class="slide-img ${index === 0 ? 'active' : ''}" id="heroImg-${index}" src="${slide.img}" alt="Hero Image">`
-  ).join('');
-  
-  updateHeroSlide();
-  setInterval(() => {
-    currentSlide = (currentSlide + 1) % heroContent.length;
-    updateHeroSlide();
-  }, 5000);
-}
-
-function updateHeroSlide() {
-  const textContainer = document.getElementById('dynamicHeroText');
-  const currentContent = heroContent[currentSlide];
-
-  textContainer.classList.remove('fade-in-up');
-  void textContainer.offsetWidth; 
-  
-  textContainer.innerHTML = `
-    <h2>${currentContent.title}</h2>
-    <p>${currentContent.desc}</p>
-  `;
-  textContainer.classList.add('fade-in-up');
-
-  heroContent.forEach((_, index) => {
-    const img = document.getElementById(`heroImg-${index}`);
-    if(img) {
-      if(index === currentSlide) img.classList.add('active');
-      else img.classList.remove('active');
-    }
-  });
-}
-
-// ── INVENTORY DATA ──
-const inventory = [
-  { id: 1, brand: 'Apple', name: 'MacBook Air M2', price: 285000, desc: 'Incredibly thin and light MacBook Air with silent design.', images: ['https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80', 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Apple M2', RAM: '8GB Unified', Storage: '256GB SSD', Display: '13.6" Retina' } },
-  { id: 2, brand: 'Apple', name: 'MacBook Pro 14"', price: 460000, desc: 'The ultimate pro laptop featuring the M3 Pro chip.', images: ['https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80', 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Apple M3 Pro', RAM: '18GB Unified', Storage: '512GB SSD', Display: '14.2" XDR' } },
-  { id: 3, brand: 'Dell', name: 'Dell XPS 13 Plus', price: 340000, desc: 'Futuristic design with seamless glass touchpad.', images: ['https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80', 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Intel i7-1360P', RAM: '16GB LPDDR5', Storage: '512GB NVMe', Display: '13.4" Touch' } },
-  { id: 4, brand: 'ASUS', name: 'ROG Zephyrus', price: 395000, desc: 'Incredible gaming power in a portable chassis.', images: ['https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80', 'https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Ryzen 9 7940HS', RAM: '16GB DDR5', Storage: '1TB PCIe SSD', GPU: 'RTX 4060' } }
-];
-
+let currentCategory = 'ALL';
 let currentBrand = 'ALL';
 let currentPrice = 'ALL';
-let currentUser = null; 
+let currentUser = null;
+let wishlist = JSON.parse(localStorage.getItem('rm_wishlist') || '[]');
 
-const formatCurrency = (num) => new Intl.NumberFormat('en-PK', { style: 'currency', currency: 'PKR', maximumFractionDigits: 0 }).format(num);
+const fmt = (n) => 'Rs. ' + n.toLocaleString('en-PK');
+const discount = (p, op) => op ? Math.round((1 - p/op) * 100) : 0;
 
-// ── INIT ──
-window.onload = () => {
-  initHeroSlider(); 
+// ── HERO SLIDER ──
+function initHero() {
+  const container = document.getElementById('heroMain');
+  container.innerHTML = heroSlides.map((s, i) => `
+    <div class="hero-slide ${i===0?'active':''}" style="background:${s.gradient};" id="hslide-${i}">
+      <div class="hero-slide-text">
+        <span class="hero-slide-tag">${s.tag}</span>
+        <h2>${s.title}</h2>
+        <p>${s.subtitle}</p>
+        <span class="hero-cta" onclick="setCategory('${s.cat}',null)">${s.cta} →</span>
+      </div>
+      <div class="hero-slide-img"><img src="${s.img}" alt="${s.title}"></div>
+    </div>
+  `).join('') + `<div class="hero-dots">${heroSlides.map((_,i) => `<button class="hero-dot ${i===0?'active':''}" onclick="goToSlide(${i})"></button>`).join('')}</div>`;
 
-  const savedUser = localStorage.getItem('rm_currentUser');
-  if(savedUser) { currentUser = savedUser; updateAuthUI(); }
-  
-  if(!localStorage.getItem('rm_reviews')) {
-    const defaultReviews = [
-      { author: 'Ali R.', email: 'ali@test.com', text: 'Got my MacBook Air M2 delivered perfectly. RM Store is great!' },
-      { author: 'Saad A.', email: 'saad@test.com', text: 'Arranged an ASUS ROG for me at the best price. Highly recommended.' }
-    ];
-    localStorage.setItem('rm_reviews', JSON.stringify(defaultReviews));
-  }
-  
-  renderGrid();
-  renderReviews();
-};
+  setInterval(() => goToSlide((currentSlide + 1) % heroSlides.length), 5000);
+}
 
-// ── PRODUCT RENDER & FILTERS ──
-function executeSearch() { renderGrid(); }
+function goToSlide(n) {
+  document.querySelectorAll('.hero-slide').forEach((s,i) => s.classList.toggle('active', i===n));
+  document.querySelectorAll('.hero-dot').forEach((d,i) => d.classList.toggle('active', i===n));
+  currentSlide = n;
+}
 
-function renderGrid() {
-  const grid = document.getElementById('productGrid');
-  const searchQuery = document.getElementById('searchInput').value.toLowerCase();
-  
-  let filtered = inventory.filter(item => {
-    let matchBrand = currentBrand === 'ALL' || item.brand === currentBrand;
-    let matchSearch = item.name.toLowerCase().includes(searchQuery) || item.brand.toLowerCase().includes(searchQuery);
-    let matchPrice = true;
-    if (currentPrice === 'U100') matchPrice = item.price < 100000;
-    else if (currentPrice === '100-200') matchPrice = item.price >= 100000 && item.price <= 200000;
-    else if (currentPrice === '200-300') matchPrice = item.price > 200000 && item.price <= 300000;
-    else if (currentPrice === '300+') matchPrice = item.price > 300000;
-    return matchBrand && matchSearch && matchPrice;
-  });
-
-  document.getElementById('sectionTitle').innerText = currentBrand === 'ALL' ? 'All Laptops' : `${currentBrand} Laptops`;
-  if (filtered.length === 0) { grid.innerHTML = `<div style="grid-column: 1/-1; padding: 3rem; text-align: center;">No laptops found.</div>`; return; }
-
-  grid.innerHTML = filtered.map(item => `
-    <div class="card glass" onclick="openModal(${item.id})">
-      <div class="card-img-container"><img src="${item.images[0]}" alt="${item.name}"></div>
-      <div class="card-info">
-        <span class="card-brand">${item.brand}</span>
-        <h4 class="card-title">${item.name}</h4>
-        <div class="card-specs"><strong>CPU:</strong> ${item.specs.CPU} <br><strong>RAM:</strong> ${item.specs.RAM} • ${item.specs.Storage}</div>
-        <div class="card-bottom"><div class="price">${formatCurrency(item.price)}</div><button class="view-btn">View Specs</button></div>
+// ── DEALS STRIP ──
+function initDealsStrip() {
+  const hotItems = inventory.filter(p => p.oldPrice).slice(0, 8);
+  document.getElementById('dealsStrip').innerHTML = `<span class="deals-strip-label">⚡ Flash Deals</span>` + hotItems.map(p => `
+    <div class="deal-chip" onclick="openModal(${p.id})">
+      <img src="${p.images[0]}" alt="${p.name}">
+      <div class="deal-chip-text">
+        <div class="deal-name">${p.brand} ${p.name.split(' ').slice(-2).join(' ')}</div>
+        <div class="deal-price">${fmt(p.price)}</div>
+        <div class="deal-discount">-${discount(p.price,p.oldPrice)}% OFF</div>
       </div>
     </div>
   `).join('');
 }
 
-function filterBrand(brand, el) { currentBrand = brand; document.querySelectorAll('#categoryList li').forEach(li => li.classList.remove('active')); if(el) el.classList.add('active'); renderGrid(); }
-function filterPrice(range, el) { currentPrice = range; document.querySelectorAll('#priceList li').forEach(li => li.classList.remove('active')); if (el) el.classList.add('active'); renderGrid(); }
+// ── PRODUCT CARD HTML ──
+function cardHTML(item) {
+  const disc = discount(item.price, item.oldPrice);
+  const inWish = wishlist.includes(item.id);
+  const starsHTML = '★'.repeat(Math.round(item.rating)) + '☆'.repeat(5 - Math.round(item.rating));
+  return `
+    <div class="prod-card fade-in" onclick="openModal(${item.id})">
+      ${item.badge ? `<span class="prod-badge badge-${item.badge}">${item.badge==='hot'?'🔥 Hot':item.badge==='new'?'✨ New':'💰 Sale'}</span>` : ''}
+      <button class="wishlist-btn ${inWish?'active':''}" onclick="toggleWishlistItem(event,${item.id})">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+      <div class="prod-img-wrap"><img src="${item.images[0]}" alt="${item.name}" loading="lazy"></div>
+      <div class="prod-info">
+        <div class="prod-brand">${item.brand}</div>
+        <div class="prod-name">${item.name}</div>
+        <div class="prod-rating">
+          <span class="stars-small">${starsHTML}</span>
+          <span class="rating-count">(${item.reviews})</span>
+        </div>
+        <div class="prod-price-row">
+          <span class="prod-price">${fmt(item.price)}</span>
+          ${item.oldPrice ? `<span class="prod-old-price">${fmt(item.oldPrice)}</span> <span class="prod-discount-pct">-${disc}%</span>` : ''}
+          <div class="compare-price-label">🏷 ${item.priceHistory.length} stores compared</div>
+        </div>
+      </div>
+      <div class="prod-action-row">
+        <button class="btn-compare" onclick="openModal(${item.id})">Compare</button>
+        <button class="btn-detail" onclick="openModal(${item.id})">Details</button>
+      </div>
+    </div>
+  `;
+}
+
+// ── RENDER HOME SECTIONS ──
+function renderHomeSections() {
+  const hotDeals = inventory.filter(p => p.badge === 'hot' || p.badge === 'sale').slice(0, 8);
+  const newArrivals = inventory.filter(p => p.badge === 'new').slice(0, 8);
+  document.getElementById('hotDealsGrid').innerHTML = hotDeals.map(cardHTML).join('');
+  document.getElementById('newArrivalsGrid').innerHTML = newArrivals.map(cardHTML).join('');
+}
+
+// ── MAIN GRID RENDER ──
+function renderGrid() {
+  const query = document.getElementById('searchInput').value.toLowerCase().trim();
+  const sort = document.getElementById('sortSelect').value;
+
+  let filtered = inventory.filter(p => {
+    const matchCat = currentCategory === 'ALL' || p.category === currentCategory;
+    const matchBrand = currentBrand === 'ALL' || p.brand === currentBrand;
+    const matchSearch = !query || p.name.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query) || p.category.toLowerCase().includes(query);
+    let matchPrice = true;
+    if (currentPrice === 'U50') matchPrice = p.price < 50000;
+    else if (currentPrice === '50-150') matchPrice = p.price >= 50000 && p.price <= 150000;
+    else if (currentPrice === '150-300') matchPrice = p.price > 150000 && p.price <= 300000;
+    else if (currentPrice === '300+') matchPrice = p.price > 300000;
+    return matchCat && matchBrand && matchSearch && matchPrice;
+  });
+
+  if (sort === 'price-asc') filtered.sort((a,b) => a.price - b.price);
+  else if (sort === 'price-desc') filtered.sort((a,b) => b.price - a.price);
+  else if (sort === 'name-asc') filtered.sort((a,b) => a.name.localeCompare(b.name));
+
+  const catLabel = currentCategory === 'ALL' ? 'All Products' : `${currentCategory}s`;
+  document.getElementById('shopTitle').innerText = currentBrand !== 'ALL' ? `${currentBrand} ${catLabel}` : catLabel;
+  document.getElementById('shopCount').innerText = `${filtered.length} product${filtered.length !== 1 ? 's' : ''} found`;
+
+  const grid = document.getElementById('mainProductGrid');
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div style="grid-column:1/-1;padding:3rem;text-align:center;color:var(--text-muted);">No products found. Try adjusting your filters.</div>`;
+    return;
+  }
+  grid.innerHTML = filtered.map(cardHTML).join('');
+}
+
+// ── FILTERS ──
+function setCategory(cat, el) {
+  currentCategory = cat;
+  // update nav
+  document.querySelectorAll('.cat-nav-item').forEach(n => n.classList.remove('active'));
+  if (el) el.classList.add('active');
+  // update sidebar
+  document.querySelectorAll('#sidebarCategories li').forEach(li => {
+    li.classList.toggle('active', li.textContent.includes(cat === 'ALL' ? 'All' : cat));
+  });
+  renderGrid();
+  document.getElementById('shopSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function setBrand(brand, el) {
+  currentBrand = brand;
+  document.querySelectorAll('.brand-chip').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('#sidebarBrands li').forEach(l => l.classList.remove('active'));
+  if (el) el.classList.add('active');
+  renderGrid();
+}
+
+function filterPrice(range, el) {
+  currentPrice = range;
+  document.querySelectorAll('#sidebarPrices li').forEach(l => l.classList.remove('active'));
+  if (el) el.classList.add('active');
+  renderGrid();
+}
+
+function executeSearch() { renderGrid(); }
+function goHome() { currentCategory = 'ALL'; currentBrand = 'ALL'; currentPrice = 'ALL'; renderGrid(); window.scrollTo(0,0); }
+function scrollToDeals() { document.getElementById('dealsAnchor').scrollIntoView({ behavior: 'smooth' }); }
 
 // ── PRODUCT MODAL ──
 function openModal(id) {
-  const item = inventory.find(i => i.id === id);
-  if(!item) return;
+  const item = inventory.find(p => p.id === id);
+  if (!item) return;
+
   document.getElementById('mMainImg').src = item.images[0];
-  document.getElementById('mThumbnails').innerHTML = item.images.map((imgSrc, i) => `<img src="${imgSrc}" class="thumb ${i===0?'active':''}" onclick="changeModalImage(this, '${imgSrc}')">`).join('');
-  document.getElementById('mBrand').innerText = item.brand; document.getElementById('mTitle').innerText = item.name; document.getElementById('mDesc').innerText = item.desc; document.getElementById('mPrice').innerText = formatCurrency(item.price);
-  document.getElementById('mSpecs').innerHTML = Object.entries(item.specs).map(([k, v]) => `<div class="spec-box"><div style="font-size:0.75rem; font-weight:700; color:var(--text-muted);">${k}</div><div style="font-weight:700;">${v}</div></div>`).join('');
-  document.getElementById('mWhatsAppBtn').href = `https://wa.me/923252365042?text=${encodeURIComponent(`Hi RM Store! I want to order the ${item.brand} ${item.name} for ${formatCurrency(item.price)}.`)}`;
+  document.getElementById('mThumbnails').innerHTML = item.images.map((src, i) =>
+    `<img src="${src}" class="thumb ${i===0?'active':''}" onclick="changeModalImg(this,'${src}')">`
+  ).join('');
+  document.getElementById('mBrand').innerText = item.brand;
+  document.getElementById('mTitle').innerText = item.name;
+  document.getElementById('mPrice').innerText = fmt(item.price);
+  document.getElementById('mOldPrice').innerText = item.oldPrice ? `Was: ${fmt(item.oldPrice)}  —  Save ${discount(item.price,item.oldPrice)}%` : '';
+  document.getElementById('mDesc').innerText = item.desc;
+  document.getElementById('mSpecs').innerHTML = Object.entries(item.specs).map(([k,v]) =>
+    `<div class="spec-box"><div class="spec-key">${k}</div><div class="spec-val">${v}</div></div>`
+  ).join('');
+  document.getElementById('mCompareTable').innerHTML = `
+    <tr><th>Store</th><th>Price</th><th>Note</th></tr>
+    ${item.priceHistory.map((r,i) => `
+      <tr>
+        <td class="store-name">${r.store}${i===0?'<span class="lowest-badge">LOWEST</span>':''}</td>
+        <td class="${i===0?'lowest':''}">${fmt(r.price)}</td>
+        <td>${r.note}</td>
+      </tr>`).join('')}
+  `;
+  document.getElementById('mWhatsAppBtn').href = `https://wa.me/923252365042?text=${encodeURIComponent(`Hi RM Store! I want to order the ${item.brand} ${item.name} for ${fmt(item.price)}.`)}`;
   document.getElementById('productModal').classList.add('active');
 }
-function changeModalImage(el, src) { document.getElementById('mMainImg').src = src; document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active')); el.classList.add('active'); }
 
-// ── REAL LOCALSTORAGE AUTHENTICATION ──
+function changeModalImg(el, src) {
+  document.getElementById('mMainImg').src = src;
+  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ── WISHLIST ──
+function toggleWishlistItem(e, id) {
+  e.stopPropagation();
+  if (wishlist.includes(id)) wishlist = wishlist.filter(w => w !== id);
+  else wishlist.push(id);
+  localStorage.setItem('rm_wishlist', JSON.stringify(wishlist));
+  renderGrid();
+  renderHomeSections();
+}
+function toggleWishlist() { alert('Your wishlist has ' + wishlist.length + ' item(s).'); }
+
+// ── AUTH ──
 function openAuthModal() {
-  if(currentUser) {
+  if (currentUser) {
     document.getElementById('dashEmail').innerText = currentUser;
-    const reviews = JSON.parse(localStorage.getItem('rm_reviews')) || [];
+    const reviews = JSON.parse(localStorage.getItem('rm_reviews') || '[]');
     document.getElementById('dashReviewCount').innerText = reviews.filter(r => r.email === currentUser).length;
     document.getElementById('dashboardModal').classList.add('active');
   } else {
@@ -532,19 +973,19 @@ function openAuthModal() {
 }
 
 function executeLogin() {
-  const email = document.getElementById('authEmail').value;
+  const email = document.getElementById('authEmail').value.trim();
   const pass = document.getElementById('authPass').value;
-  if(!email || !pass) { alert("Please enter email and password."); return; }
-  
+  if (!email || !pass) { alert('Please enter email and password.'); return; }
   currentUser = email;
   localStorage.setItem('rm_currentUser', email);
-  document.getElementById('authEmail').value = ''; document.getElementById('authPass').value = '';
+  document.getElementById('authEmail').value = '';
+  document.getElementById('authPass').value = '';
   document.getElementById('loginModal').classList.remove('active');
   updateAuthUI();
-  alert("Successfully logged in!");
+  alert('Welcome! You are now logged in.');
 }
 
-function fakeGoogleLogin() { alert("Notice: True Google Login requires a backend server. This template uses Local Storage for email login simulation."); }
+function fakeGoogleLogin() { alert('Google Sign-In requires a backend server. Please use email login.'); }
 
 function logout() {
   currentUser = null;
@@ -554,44 +995,67 @@ function logout() {
 }
 
 function updateAuthUI() {
-  const btn = document.getElementById('headerAuthBtn');
-  if(currentUser) {
-    btn.innerText = "Dashboard";
-    document.getElementById('reviewFormContainer').classList.add('active');
-  } else {
-    btn.innerText = "Login";
-    document.getElementById('reviewFormContainer').classList.remove('active');
-  }
+  document.getElementById('headerAuthBtn').innerText = currentUser ? 'Dashboard' : 'Login';
+  document.getElementById('reviewFormContainer').classList.toggle('active', !!currentUser);
 }
 
-// ── REAL LOCALSTORAGE REVIEWS ──
+// ── REVIEWS ──
 function renderReviews() {
-  const reviews = JSON.parse(localStorage.getItem('rm_reviews')) || [];
-  document.getElementById('reviewsGrid').innerHTML = reviews.map(r => `
-    <div class="review-card glass">
+  const reviews = JSON.parse(localStorage.getItem('rm_reviews') || '[]');
+  document.getElementById('reviewsGrid').innerHTML = [...reviews].reverse().map(r => `
+    <div class="review-card">
       <div class="stars">★★★★★</div>
       <p class="review-text">"${r.text}"</p>
-      <div class="author-info">${r.author} <span style="color:var(--whatsapp); font-size:0.75rem; margin-left:5px;">✓ Verified Buyer</span></div>
+      <div class="author-info">${r.author} <span style="color:var(--primary);font-size:0.72rem;margin-left:5px;">✓ Verified Buyer</span></div>
     </div>
-  `).reverse().join('');
+  `).join('');
 }
 
 function submitReview() {
-  const text = document.getElementById('reviewText').value;
-  if(!text.trim()) { alert("Please write something first!"); return; }
-  
-  const reviews = JSON.parse(localStorage.getItem('rm_reviews')) || [];
-  const nameParts = currentUser.split('@')[0];
-  const displayName = nameParts.charAt(0).toUpperCase() + nameParts.slice(1);
-
-  reviews.push({ author: displayName, email: currentUser, text: text });
+  const text = document.getElementById('reviewText').value.trim();
+  if (!text) { alert('Please write something first!'); return; }
+  const reviews = JSON.parse(localStorage.getItem('rm_reviews') || '[]');
+  const namePart = currentUser.split('@')[0];
+  const displayName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
+  reviews.push({ author: displayName, email: currentUser, text });
   localStorage.setItem('rm_reviews', JSON.stringify(reviews));
   document.getElementById('reviewText').value = '';
   renderReviews();
-  alert("Review submitted successfully!");
+  alert('Review submitted!');
 }
 
-function closeModal(e, modalId) { if (e.target.id === modalId) document.getElementById(modalId).classList.remove('active'); }
+// ── NEWSLETTER ──
+function subscribeNewsletter(e) {
+  e.preventDefault();
+  alert('Thank you for subscribing! You will receive the best deals in your inbox.');
+  e.target.reset();
+}
+
+// ── CLOSE MODAL ──
+function closeModal(e, id) {
+  if (e.target.id === id) document.getElementById(id).classList.remove('active');
+}
+
+// ── INIT ──
+window.onload = () => {
+  initHero();
+  initDealsStrip();
+
+  const saved = localStorage.getItem('rm_currentUser');
+  if (saved) { currentUser = saved; updateAuthUI(); }
+
+  if (!localStorage.getItem('rm_reviews')) {
+    localStorage.setItem('rm_reviews', JSON.stringify([
+      { author: 'Ali R.', email: 'ali@test.com', text: 'Got my MacBook Air delivered perfectly. RM Store always has the best prices!' },
+      { author: 'Saad A.', email: 'saad@test.com', text: 'Bought an ROG laptop — best gaming laptop deal in Pakistan. Highly recommended.' },
+      { author: 'Fatima K.', email: 'fatima@test.com', text: 'iPhone 15 Pro Max at a great price. Fast response and genuine product. 5 stars!' }
+    ]));
+  }
+
+  renderHomeSections();
+  renderGrid();
+  renderReviews();
+};
 </script>
 </body>
 </html>
