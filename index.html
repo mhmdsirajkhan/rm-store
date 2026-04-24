@@ -11,6 +11,7 @@
     --primary-hover: #0056b3;
     --text-main: #1d1d1f;
     --text-muted: #86868b;
+    --logo-accent: #ffffff;
     --whatsapp: #25D366;
     --whatsapp-hover: #1ebd5c;
     --radius-lg: 24px;
@@ -64,9 +65,9 @@
   .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; flex-shrink: 0; }
   .logo-svg-container { width: 56px; height: 42px; position: relative; animation: floatLogo 4s ease-in-out infinite; }
   .logo-svg-container svg { overflow: visible; }
-  .logo-pulse { animation: pulseRing 2.2s ease-out infinite; transform-origin: 50px 50px; }
-  .logo-core { animation: coreGlow 2.2s ease-in-out infinite; transform-origin: 50px 50px; }
-  .logo-lid { animation: lidTilt 2.2s ease-in-out infinite; transform-origin: 50px 34px; }
+  .logo-pulse { animation: pulseRing 2.2s ease-out infinite; transform-origin: 50% 50%; }
+  .logo-core { animation: coreGlow 2.2s ease-in-out infinite; transform-origin: 50% 50%; }
+  .logo-lid { animation: lidTilt 2.2s ease-in-out infinite; transform-origin: 50% 34%; }
   @keyframes floatLogo {
     0%, 100% { transform: translateY(0px); filter: drop-shadow(0 5px 5px rgba(0,122,255,0.2)); }
     50% { transform: translateY(-4px); filter: drop-shadow(0 15px 15px rgba(0,122,255,0.4)); }
@@ -253,7 +254,7 @@
             <rect class="logo-lid" x="22" y="20" width="56" height="35" rx="6" fill="none" stroke="url(#logoGrad)" stroke-width="5"/>
             <path d="M 16 64 L 84 64 L 78 76 L 22 76 Z" fill="url(#logoGrad)" opacity="0.95"/>
             <circle class="logo-core" cx="50" cy="37" r="7" fill="url(#logoGrad)"/>
-            <path d="M 46 35 L 54 35 M 46 39 L 54 39" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+            <path d="M 46 35 L 54 35 M 46 39 L 54 39" stroke="var(--logo-accent)" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="logo-text">
