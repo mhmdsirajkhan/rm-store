@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>RM Store | Premium Laptops</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #007aff;
+    --primary-hover: #0056b3;
+    --text-main: #1d1d1f;
+    --text-muted: #86868b;
+    --whatsapp: #25D366;
+    --whatsapp-hover: #1ebd5c;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body { 
+    color: var(--text-main); 
+    font-family: 'Inter', -apple-system, sans-serif; 
+    line-height: 1.5; 
+    overflow-x: hidden;
+    background: linear-gradient(-45deg, #f8fafc, #e0f2fe, #dbeafe, #f1f5f9);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .bg-blob { position: fixed; border-radius: 50%; filter: blur(80px); z-index: -1; opacity: 0.5; animation: blobMove 10s infinite alternate ease-in-out; }
+  .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #bfdbfe; }
+  .blob-2 { bottom: -10%; right: -10%; width: 60vw; height: 60vw; background: #e9d5ff; animation-delay: -5s; }
+
+  @keyframes blobMove {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.1) translate(20px, 20px); }
+  }
+
+  button { cursor: pointer; font-family: inherit; }
+  a { text-decoration: none; color: inherit; }
+
+  /* Glassmorphism */
+  .glass { background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05); }
+
+  /* HEADER */
+  header { position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.4); }
+  .header-container { max-width: 1440px; margin: 0 auto; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+  
+  .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; flex-shrink: 0; }
+  .logo-svg-container { width: 50px; height: 40px; position: relative; animation: floatLogo 4s ease-in-out infinite; }
+  @keyframes floatLogo {
+    0%, 100% { transform: translateY(0px); filter: drop-shadow(0 5px 5px rgba(0,122,255,0.2)); }
+    50% { transform: translateY(-4px); filter: drop-shadow(0 15px 15px rgba(0,122,255,0.4)); }
+  }
+  .logo-text h1 { font-size: 1.4rem; font-weight: 900; letter-spacing: -1px; line-height: 1; background: linear-gradient(90deg, #007aff, #00c6ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .logo-text span { font-size: 0.6rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .search-container { flex: 1; min-width: 250px; max-width: 500px; position: relative; }
+  .search-container input { width: 100%; padding: 0.8rem 1.2rem 0.8rem 2.8rem; border: 1px solid rgba(255,255,255,0.8); border-radius: 20px; background: rgba(255,255,255,0.5); font-size: 0.95rem; outline: none; transition: all 0.3s; }
+  .search-container input:focus { background: rgba(255,255,255,0.9); border-color: var(--primary); box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15); }
+  .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); width: 18px; height: 18px; }
+
+  .header-actions { display: flex; align-items: center; gap: 1rem; }
+  .contact-badge { background: rgba(255,255,255,0.8); color: var(--text-main); padding: 0.6rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,0.5); white-space: nowrap; }
+  .auth-btn { background: var(--primary); color: white; padding: 0.6rem 1.2rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem; border: none; transition: 0.3s; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+
+  /* ── DYNAMIC HERO SECTION ── */
+  .hero { overflow: hidden; margin: 2rem auto; max-width: 1350px; border-radius: var(--radius-lg); width: 95%; }
+  .hero-container { padding: 4rem; display: flex; align-items: center; justify-content: space-between; gap: 3rem; min-height: 450px; }
+  .hero-text { flex: 1; max-width: 600px; }
+  
+  /* Text Animation Classes */
+  .hero-text h2 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px; }
+  .hero-text h2 span { background: linear-gradient(90deg, #007aff, #00c6ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-text p { font-size: 1.15rem; color: var(--text-muted); }
+  
+  .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-slider { flex: 1; position: relative; height: 350px; display: flex; align-items: center; justify-content: center; }
+  .slide-img { position: absolute; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15)); opacity: 0; transform: scale(0.95); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .slide-img.active { opacity: 1; transform: scale(1); }
+
+  /* LAYOUT */
+  .main-layout { max-width: 1440px; margin: 2rem auto; padding: 0 2rem; display: grid; grid-template-columns: 260px 1fr; gap: 3rem; }
+  
+  .sidebar-block { border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; }
+  .sidebar-title { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+  .filter-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .filter-list li { padding: 0.6rem 0.8rem; border-radius: 12px; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: 0.2s; white-space: nowrap; }
+  .filter-list li:hover { background: rgba(0, 122, 255, 0.1); color: var(--primary); }
+  .filter-list li.active { background: var(--primary); color: white; font-weight: 700; }
+
+  /* PRODUCT GRID */
+  .grid-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+  .grid-header h3 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; }
+  
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+  .card { border-radius: var(--radius-lg); overflow: hidden; transition: all 0.3s ease; cursor: pointer; display: flex; flex-direction: column; }
+  .card-img-container { width: 100%; height: 200px; padding: 1.5rem; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.4); border-bottom: 1px solid rgba(255,255,255,0.5); }
+  .card-img-container img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.5s; }
+  .card:hover .card-img-container img { transform: scale(1.08); }
+
+  .card-info { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+  .card-brand { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.3rem; }
+  .card-title { font-size: 1.1rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.5rem; }
+  .card-specs { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
+  .card-bottom { margin-top: auto; display: flex; align-items: center; justify-content: space-between; }
+  .price { font-size: 1.3rem; font-weight: 800; color: var(--text-main); }
+  .view-btn { background: rgba(0,0,0,0.05); border: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem; transition: background 0.3s, color 0.3s;}
+  .card:hover .view-btn { background: var(--primary); color: white;}
+
+  /* REVIEWS */
+  .reviews-section { max-width: 1440px; margin: 4rem auto; padding: 0 2rem; }
+  .reviews-header { text-align: center; margin-bottom: 2rem; }
+  .reviews-header h2 { font-size: 2.2rem; font-weight: 800; }
+  
+  .review-form { max-width: 600px; margin: 0 auto 3rem auto; padding: 2rem; border-radius: var(--radius-lg); display: none; }
+  .review-form.active { display: block; }
+  .review-form textarea { width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); background: rgba(255,255,255,0.8); resize: none; margin-bottom: 1rem; outline: none; font-family: inherit; }
+  
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+  .review-card { padding: 1.5rem; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 0.8rem; }
+  .stars { color: #f59e0b; font-size: 1.2rem; }
+  .review-text { font-size: 0.95rem; font-style: italic; color: var(--text-main); flex: 1; }
+  .author-info { margin-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1rem; font-weight: 700; font-size: 0.9rem; }
+
+  /* MODALS */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(10px); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
+  .modal-overlay.active { display: flex; }
+  .modal-content { width: 100%; max-width: 900px; border-radius: var(--radius-lg); overflow: hidden; position: relative; max-height: 95vh; overflow-y: auto; }
+  .modal-close { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.1); border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 1.2rem; z-index: 10; }
+  
+  .auth-box { max-width: 400px; padding: 2.5rem; text-align: center; margin: auto; }
+  .input-group { margin-bottom: 1rem; text-align: left; }
+  .input-group input { width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); outline: none; transition: 0.3s; }
+  .input-group input:focus { border-color: var(--primary); }
+  .btn-full { width: 100%; background: var(--primary); color: white; padding: 1rem; border: none; border-radius: 12px; font-weight: 700; margin-bottom: 1rem; }
+  
+  .google-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: white; border: 1px solid rgba(0,0,0,0.1); padding: 1rem; border-radius: 12px; font-weight: 600; }
+
+  #productModal .modal-content { display: grid; grid-template-columns: 1fr 1fr; }
+  .modal-gallery { padding: 2rem; background: rgba(255,255,255,0.7); text-align: center; }
+  .modal-main-img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 1rem; }
+  .modal-thumbnails { display: flex; gap: 10px; justify-content: center; }
+  .thumb { width: 60px; height: 60px; border-radius: 12px; cursor: pointer; object-fit: cover; border: 2px solid transparent; }
+  .thumb.active { border-color: var(--primary); }
+  
+  .modal-details { padding: 2.5rem; display: flex; flex-direction: column; }
+  .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1.5rem 0; }
+  .spec-box { background: rgba(255,255,255,0.6); padding: 0.8rem; border-radius: 12px; }
+  .order-whatsapp-btn { background: var(--whatsapp); color: white; padding: 1rem; border-radius: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; transition: transform 0.2s;}
+  .order-whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4);}
+
+  /* ── MOBILE RESPONSIVENESS ── */
+  @media (max-width: 900px) {
+    .header-container { padding: 1rem; gap: 1rem; justify-content: space-between; }
+    .search-container { order: 3; max-width: 100%; flex-basis: 100%; margin: 0; }
+    .contact-badge { display: none; }
+    
+    .hero-container { padding: 2rem; flex-direction: column; text-align: center; }
+    .hero-text h2 { font-size: 2.2rem; }
+    .hero-slider { height: 200px; width: 100%; }
+
+    .main-layout { grid-template-columns: 1fr; padding: 0 1rem; margin: 1rem auto; gap: 1.5rem; }
+    .sidebar-block { padding: 1rem; }
+    .sidebar-title { margin-bottom: 0.5rem; }
+    .filter-list { flex-direction: row; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
+    .filter-list::-webkit-scrollbar { display: none; }
+    .filter-list li { padding: 0.5rem 1rem; background: rgba(0,0,0,0.05); }
+
+    .product-grid { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); }
+
+    #productModal .modal-content { grid-template-columns: 1fr; display: flex; flex-direction: column; }
+    .modal-details { padding: 1.5rem; }
+    .spec-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <header class="glass">
+    <div class="header-container">
+      <div class="logo" onclick="filterBrand('ALL')">
+        <div class="logo-svg-container">
+          <svg viewBox="0 0 100 100" width="100%" height="100%">
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#007aff" />
+                <stop offset="100%" stop-color="#00c6ff" />
+              </linearGradient>
+            </defs>
+            <path d="M 10 75 L 90 75 L 80 85 L 20 85 Z" fill="url(#logoGrad)" opacity="0.9"/>
+            <path d="M 15 25 L 85 25 L 80 70 L 20 70 Z" fill="none" stroke="url(#logoGrad)" stroke-width="5" stroke-linejoin="round"/>
+            <text x="50" y="60" font-family="'Inter', sans-serif" font-weight="900" font-size="34" text-anchor="middle" fill="url(#logoGrad)">RM</text>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>RM Store</h1>
+          <span>Premium Tech</span>
+        </div>
+      </div>
+      
+      <div class="search-container">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Search models, brands..." oninput="executeSearch()">
+      </div>
+
+      <div class="header-actions">
+        <div class="contact-badge">📞 +92 325 2365042</div>
+        <button class="auth-btn" id="headerAuthBtn" onclick="openAuthModal()">Login</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero glass">
+    <div class="hero-container">
+      <div class="hero-text" id="dynamicHeroText">
+        </div>
+      <div class="hero-slider" id="dynamicHeroSlider">
+        </div>
+    </div>
+  </section>
+
+  <main class="main-layout">
+    <aside>
+      <div class="sidebar-block glass">
+        <div class="sidebar-title">Categories</div>
+        <ul class="filter-list" id="categoryList">
+          <li class="active" onclick="filterBrand('ALL', this)">All Laptops</li>
+          <li onclick="filterBrand('Apple', this)">Apple</li>
+          <li onclick="filterBrand('HP', this)">HP</li>
+          <li onclick="filterBrand('Dell', this)">Dell</li>
+          <li onclick="filterBrand('Lenovo', this)">Lenovo</li>
+          <li onclick="filterBrand('ASUS', this)">ASUS</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-block glass">
+        <div class="sidebar-title">Price Range</div>
+        <ul class="filter-list" id="priceList">
+          <li class="active" onclick="filterPrice('ALL', this)">Any Price</li>
+          <li onclick="filterPrice('U100', this)">Under 100k</li>
+          <li onclick="filterPrice('100-200', this)">100k - 200k</li>
+          <li onclick="filterPrice('200-300', this)">200k - 300k</li>
+          <li onclick="filterPrice('300+', this)">Above 300k</li>
+        </ul>
+      </div>
+    </aside>
+
+    <section>
+      <div class="grid-header">
+        <h3 id="sectionTitle">All Laptops</h3>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+  </main>
+
+  <section class="reviews-section">
+    <div class="reviews-header">
+      <h2>Customer Reviews</h2>
+      <p>Real feedback from our customers.</p>
+    </div>
+    
+    <div class="review-form glass" id="reviewFormContainer">
+      <h3 style="margin-bottom: 1rem;">Write a Review</h3>
+      <textarea id="reviewText" rows="4" placeholder="How was your experience with RM Store?"></textarea>
+      <button class="btn-full" onclick="submitReview()">Submit Review</button>
+    </div>
+
+    <div class="reviews-grid" id="reviewsGrid"></div>
+  </section>
+
+  <div class="modal-overlay" id="productModal" onclick="closeModal(event, 'productModal')">
+    <div class="modal-content glass">
+      <button class="modal-close" onclick="document.getElementById('productModal').classList.remove('active')">✕</button>
+      <div class="modal-gallery">
+        <img id="mMainImg" class="modal-main-img" src="" alt="Laptop Image">
+        <div class="modal-thumbnails" id="mThumbnails"></div>
+      </div>
+      <div class="modal-details">
+        <div class="modal-brand" id="mBrand">Brand</div>
+        <h2 class="modal-title" id="mTitle" style="font-size: 1.8rem; margin-bottom: 0.5rem;">Product Title</h2>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;" id="mDesc">Description</p>
+        <div class="price" id="mPrice" style="font-size: 1.8rem; margin-bottom: 1.5rem;">Rs. 0</div>
+        <div class="spec-grid" id="mSpecs"></div>
+        <a href="#" id="mWhatsAppBtn" target="_blank" class="order-whatsapp-btn">
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="loginModal" onclick="closeModal(event, 'loginModal')">
+    <div class="modal-content auth-box glass">
+      <button class="modal-close" onclick="document.getElementById('loginModal').classList.remove('active')">✕</button>
+      <h2>Sign In</h2>
+      <p>Create an account or log in to leave reviews.</p>
+      
+      <div class="input-group">
+        <input type="email" id="authEmail" placeholder="Email Address">
+      </div>
+      <div class="input-group">
+        <input type="password" id="authPass" placeholder="Password">
+      </div>
+      <button class="btn-full" onclick="executeLogin()">Register / Log In</button>
+      
+      <button class="google-btn" onclick="fakeGoogleLogin()">
+        <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Continue with Google
+      </button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="dashboardModal" onclick="closeModal(event, 'dashboardModal')">
+    <div class="modal-content auth-box glass" style="max-width: 500px;">
+      <button class="modal-close" onclick="document.getElementById('dashboardModal').classList.remove('active')">✕</button>
+      <h2 style="margin-bottom: 0.5rem;">My Dashboard</h2>
+      <p id="dashEmail" style="color: var(--primary); font-weight: 700; margin-bottom: 2rem;">user@email.com</p>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+        <div style="background: rgba(255,255,255,0.5); padding: 1.5rem; border-radius: 16px;">
+          <h3 style="font-size: 2rem; color: var(--primary);">0</h3>
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">ORDERS</span>
+        </div>
+        <div style="background: rgba(255,255,255,0.5); padding: 1.5rem; border-radius: 16px;">
+          <h3 style="font-size: 2rem; color: var(--whatsapp);" id="dashReviewCount">0</h3>
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">REVIEWS</span>
+        </div>
+      </div>
+      <button class="btn-full" style="background: rgba(0,0,0,0.1); color: var(--text-main);" onclick="logout()">Sign Out</button>
+    </div>
+  </div>
+
+<script>
+// ── SYNCED HERO SLIDER LOGIC ──
+const heroContent = [
+  {
+    img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80',
+    title: 'Unleash your potential with <span>Premium Tech</span>.',
+    desc: "Pakistan's most curated collection of glossy ultrabooks and powerful rigs."
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80',
+    title: 'Dominate the game with <span>Ultimate Power</span>.',
+    desc: 'Experience desktop-class performance on the go with our top-tier gaming rigs and high-refresh displays.'
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80',
+    title: 'Elevate your workflow with <span>Sleek Design</span>.',
+    desc: 'Discover edge-to-edge displays and premium craftsmanship tailored for creators and professionals.'
+  }
+];
+
+let currentSlide = 0;
+
+function initHeroSlider() {
+  const sliderContainer = document.getElementById('dynamicHeroSlider');
+  
+  // Inject images into DOM once
+  sliderContainer.innerHTML = heroContent.map((slide, index) => 
+    `<img class="slide-img ${index === 0 ? 'active' : ''}" id="heroImg-${index}" src="${slide.img}" alt="Hero Image">`
+  ).join('');
+  
+  // Show first text
+  updateHeroSlide();
+
+  // Change slide every 5 seconds
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % heroContent.length;
+    updateHeroSlide();
+  }, 5000);
+}
+
+function updateHeroSlide() {
+  const textContainer = document.getElementById('dynamicHeroText');
+  const currentContent = heroContent[currentSlide];
+
+  // Reset text animation by removing and re-adding the class
+  textContainer.classList.remove('fade-in-up');
+  void textContainer.offsetWidth; // Trigger reflow to restart animation
+  
+  textContainer.innerHTML = `
+    <h2>${currentContent.title}</h2>
+    <p>${currentContent.desc}</p>
+  `;
+  textContainer.classList.add('fade-in-up');
+
+  // Update images
+  heroContent.forEach((_, index) => {
+    const img = document.getElementById(`heroImg-${index}`);
+    if(img) {
+      if(index === currentSlide) {
+        img.classList.add('active');
+      } else {
+        img.classList.remove('active');
+      }
+    }
+  });
+}
+
+// ── INVENTORY DATA ──
+const inventory = [
+  { id: 1, brand: 'Apple', name: 'MacBook Air M2', price: 285000, desc: 'Incredibly thin and light MacBook Air with silent design.', images: ['https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80', 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Apple M2', RAM: '8GB Unified', Storage: '256GB SSD', Display: '13.6" Retina' } },
+  { id: 2, brand: 'Apple', name: 'MacBook Pro 14"', price: 460000, desc: 'The ultimate pro laptop featuring the M3 Pro chip.', images: ['https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80', 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Apple M3 Pro', RAM: '18GB Unified', Storage: '512GB SSD', Display: '14.2" XDR' } },
+  { id: 3, brand: 'Dell', name: 'Dell XPS 13 Plus', price: 340000, desc: 'Futuristic design with seamless glass touchpad.', images: ['https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80', 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Intel i7-1360P', RAM: '16GB LPDDR5', Storage: '512GB NVMe', Display: '13.4" Touch' } },
+  { id: 4, brand: 'ASUS', name: 'ROG Zephyrus', price: 395000, desc: 'Incredible gaming power in a portable chassis.', images: ['https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80', 'https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Ryzen 9 7940HS', RAM: '16GB DDR5', Storage: '1TB PCIe SSD', GPU: 'RTX 4060' } }
+];
+
+let currentBrand = 'ALL';
+let currentPrice = 'ALL';
+let currentUser = null; 
+
+const formatCurrency = (num) => new Intl.NumberFormat('en-PK', { style: 'currency', currency: 'PKR', maximumFractionDigits: 0 }).format(num);
+
+// ── INIT ──
+window.onload = () => {
+  initHeroSlider(); // Start the animated slider
+
+  const savedUser = localStorage.getItem('rm_currentUser');
+  if(savedUser) { currentUser = savedUser; updateAuthUI(); }
+  
+  if(!localStorage.getItem('rm_reviews')) {
+    const defaultReviews = [
+      { author: 'Ali R.', email: 'ali@test.com', text: 'Got my MacBook Air M2 delivered perfectly. RM Store is great!' },
+      { author: 'Saad A.', email: 'saad@test.com', text: 'Arranged an ASUS ROG for me at the best price. Highly recommended.' }
+    ];
+    localStorage.setItem('rm_reviews', JSON.stringify(defaultReviews));
+  }
+  
+  renderGrid();
+  renderReviews();
+};
+
+// ── PRODUCT RENDER & FILTERS ──
+function executeSearch() { renderGrid(); }
+
+function renderGrid() {
+  const grid = document.getElementById('productGrid');
+  const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+  
+  let filtered = inventory.filter(item => {
+    let matchBrand = currentBrand === 'ALL' || item.brand === currentBrand;
+    let matchSearch = item.name.toLowerCase().includes(searchQuery) || item.brand.toLowerCase().includes(searchQuery);
+    let matchPrice = true;
+    if (currentPrice === 'U100') matchPrice = item.price < 100000;
+    else if (currentPrice === '100-200') matchPrice = item.price >= 100000 && item.price <= 200000;
+    else if (currentPrice === '200-300') matchPrice = item.price > 200000 && item.price <= 300000;
+    else if (currentPrice === '300+') matchPrice = item.price > 300000;
+    return matchBrand && matchSearch && matchPrice;
+  });
+
+  document.getElementById('sectionTitle').innerText = currentBrand === 'ALL' ? 'All Laptops' : `${currentBrand} Laptops`;
+  if (filtered.length === 0) { grid.innerHTML = `<div style="grid-column: 1/-1; padding: 3rem; text-align: center;">No laptops found.</div>`; return; }
+
+  grid.innerHTML = filtered.map(item => `
+    <div class="card glass" onclick="openModal(${item.id})">
+      <div class="card-img-container"><img src="${item.images[0]}" alt="${item.name}"></div>
+      <div class="card-info">
+        <span class="card-brand">${item.brand}</span>
+        <h4 class="card-title">${item.name}</h4>
+        <div class="card-specs"><strong>CPU:</strong> ${item.specs.CPU} <br><strong>RAM:</strong> ${item.specs.RAM} • ${item.specs.Storage}</div>
+        <div class="card-bottom"><div class="price">${formatCurrency(item.price)}</div><button class="view-btn">View Specs</button></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterBrand(brand, el) { currentBrand = brand; document.querySelectorAll('#categoryList li').forEach(li => li.classList.remove('active')); if(el) el.classList.add('active'); renderGrid(); }
+function filterPrice(range, el) { currentPrice = range; document.querySelectorAll('#priceList li').forEach(li => li.classList.remove('active')); if (el) el.classList.add('active'); renderGrid(); }
+
+// ── PRODUCT MODAL ──
+function openModal(id) {
+  const item = inventory.find(i => i.id === id);
+  if(!item) return;
+  document.getElementById('mMainImg').src = item.images[0];
+  document.getElementById('mThumbnails').innerHTML = item.images.map((imgSrc, i) => `<img src="${imgSrc}" class="thumb ${i===0?'active':''}" onclick="changeModalImage(this, '${imgSrc}')">`).join('');
+  document.getElementById('mBrand').innerText = item.brand; document.getElementById('mTitle').innerText = item.name; document.getElementById('mDesc').innerText = item.desc; document.getElementById('mPrice').innerText = formatCurrency(item.price);
+  document.getElementById('mSpecs').innerHTML = Object.entries(item.specs).map(([k, v]) => `<div class="spec-box"><div style="font-size:0.75rem; font-weight:700; color:var(--text-muted);">${k}</div><div style="font-weight:700;">${v}</div></div>`).join('');
+  document.getElementById('mWhatsAppBtn').href = `https://wa.me/923252365042?text=${encodeURIComponent(`Hi RM Store! I want to order the ${item.brand} ${item.name} for ${formatCurrency(item.price)}.`)}`;
+  document.getElementById('productModal').classList.add('active');
+}
+function changeModalImage(el, src) { document.getElementById('mMainImg').src = src; document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active')); el.classList.add('active'); }
+
+// ── REAL LOCALSTORAGE AUTHENTICATION ──
+function openAuthModal() {
+  if(currentUser) {
+    document.getElementById('dashEmail').innerText = currentUser;
+    const reviews = JSON.parse(localStorage.getItem('rm_reviews')) || [];
+    document.getElementById('dashReviewCount').innerText = reviews.filter(r => r.email === currentUser).length;
+    document.getElementById('dashboardModal').classList.add('active');
+  } else {
+    document.getElementById('loginModal').classList.add('active');
+  }
+}
+
+function executeLogin() {
+  const email = document.getElementById('authEmail').value;
+  const pass = document.getElementById('authPass').value;
+  if(!email || !pass) { alert("Please enter email and password."); return; }
+  
+  currentUser = email;
+  localStorage.setItem('rm_currentUser', email);
+  document.getElementById('authEmail').value = ''; document.getElementById('authPass').value = '';
+  document.getElementById('loginModal').classList.remove('active');
+  updateAuthUI();
+  alert("Successfully logged in!");
+}
+
+function fakeGoogleLogin() { alert("Notice: True Google Login requires a backend server. This template uses Local Storage for email login simulation."); }
+
+function logout() {
+  currentUser = null;
+  localStorage.removeItem('rm_currentUser');
+  document.getElementById('dashboardModal').classList.remove('active');
+  updateAuthUI();
+}
+
+function updateAuthUI() {
+  const btn = document.getElementById('headerAuthBtn');
+  if(currentUser) {
+    btn.innerText = "Dashboard";
+    document.getElementById('reviewFormContainer').classList.add('active');
+  } else {
+    btn.innerText = "Login";
+    document.getElementById('reviewFormContainer').classList.remove('active');
+  }
+}
+
+// ── REAL LOCALSTORAGE REVIEWS ──
+function renderReviews() {
+  const reviews = JSON.parse(localStorage.getItem('rm_reviews')) || [];
+  document.getElementById('reviewsGrid').innerHTML = reviews.map(r => `
+    <div class="review-card glass">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"${r.text}"</p>
+      <div class="author-info">${r.author} <span style="color:var(--whatsapp); font-size:0.75rem; margin-left:5px;">✓ Verified Buyer</span></div>
+    </div>
+  `).reverse().join('');
+}
+
+function submitReview() {
+  const text = document.getElementById('reviewText').value;
+  if(!text.trim()) { alert("Please write something first!"); return; }
+  
+  const reviews = JSON.parse(localStorage.getItem('rm_reviews')) || [];
+  const nameParts = currentUser.split('@')[0];
+  const displayName = nameParts.charAt(0).toUpperCase() + nameParts.slice(1);
+
+  reviews.push({ author: displayName, email: currentUser, text: text });
+  localStorage.setItem('rm_reviews', JSON.stringify(reviews));
+  document.getElementById('reviewText').value = '';
+  renderReviews();
+  alert("Review submitted successfully!");
+}
+
+function closeModal(e, modalId) { if (e.target.id === modalId) document.getElementById(modalId).classList.remove('active'); }
+</script>
+</body>
+</html>
