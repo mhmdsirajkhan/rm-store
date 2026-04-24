@@ -62,10 +62,27 @@
   .header-container { max-width: 1440px; margin: 0 auto; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
   
   .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; flex-shrink: 0; }
-  .logo-svg-container { width: 45px; height: 35px; position: relative; animation: floatLogo 4s ease-in-out infinite; }
+  .logo-svg-container { width: 56px; height: 42px; position: relative; animation: floatLogo 4s ease-in-out infinite; }
+  .logo-svg-container svg { overflow: visible; }
+  .logo-pulse { animation: pulseRing 2.2s ease-out infinite; transform-origin: 50px 50px; }
+  .logo-core { animation: coreGlow 2.2s ease-in-out infinite; transform-origin: 50px 50px; }
+  .logo-lid { animation: lidTilt 2.2s ease-in-out infinite; transform-origin: 50px 34px; }
   @keyframes floatLogo {
     0%, 100% { transform: translateY(0px); filter: drop-shadow(0 5px 5px rgba(0,122,255,0.2)); }
     50% { transform: translateY(-4px); filter: drop-shadow(0 15px 15px rgba(0,122,255,0.4)); }
+  }
+  @keyframes pulseRing {
+    0% { opacity: 0.75; transform: scale(0.9); }
+    70% { opacity: 0; transform: scale(1.2); }
+    100% { opacity: 0; transform: scale(1.2); }
+  }
+  @keyframes coreGlow {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 1; filter: drop-shadow(0 0 4px rgba(0, 198, 255, 0.8)); }
+  }
+  @keyframes lidTilt {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-4deg); }
   }
   .logo-text h1 { font-size: 1.4rem; font-weight: 900; letter-spacing: -1px; line-height: 1; background: linear-gradient(90deg, #007aff, #00c6ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .logo-text span { font-size: 0.6rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
@@ -225,16 +242,18 @@
     <div class="header-container">
       <div class="logo" onclick="filterBrand('ALL')">
         <div class="logo-svg-container">
-          <svg viewBox="0 0 100 100" width="100%" height="100%">
+          <svg viewBox="0 0 100 100" width="100%" height="100%" aria-label="RM Store animated laptop logo" role="img">
             <defs>
               <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#007aff" />
                 <stop offset="100%" stop-color="#00c6ff" />
               </linearGradient>
             </defs>
-            <path d="M 10 75 L 90 75 L 80 85 L 20 85 Z" fill="url(#logoGrad)" opacity="0.9"/>
-            <path d="M 15 25 L 85 25 L 80 70 L 20 70 Z" fill="none" stroke="url(#logoGrad)" stroke-width="5" stroke-linejoin="round"/>
-            <text x="50" y="60" font-family="'Inter', sans-serif" font-weight="900" font-size="34" text-anchor="middle" fill="url(#logoGrad)">RM</text>
+            <circle class="logo-pulse" cx="50" cy="50" r="24" fill="none" stroke="url(#logoGrad)" stroke-width="3" opacity="0.65"/>
+            <rect class="logo-lid" x="22" y="20" width="56" height="35" rx="6" fill="none" stroke="url(#logoGrad)" stroke-width="5"/>
+            <path d="M 16 64 L 84 64 L 78 76 L 22 76 Z" fill="url(#logoGrad)" opacity="0.95"/>
+            <circle class="logo-core" cx="50" cy="37" r="7" fill="url(#logoGrad)"/>
+            <path d="M 46 35 L 54 35 M 46 39 L 54 39" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="logo-text">
@@ -270,11 +289,11 @@
         <div class="sidebar-title">Categories</div>
         <ul class="filter-list" id="categoryList">
           <li class="active" onclick="filterBrand('ALL', this)">All Laptops</li>
-          <li onclick="filterBrand('Apple', this)">Apple</li>
+          <li onclick="filterBrand('MacBook', this)">MacBook</li>
           <li onclick="filterBrand('HP', this)">HP</li>
           <li onclick="filterBrand('Dell', this)">Dell</li>
           <li onclick="filterBrand('Lenovo', this)">Lenovo</li>
-          <li onclick="filterBrand('ASUS', this)">ASUS</li>
+          <li onclick="filterBrand('Chromebook', this)">Chromebook</li>
         </ul>
       </div>
 
@@ -438,10 +457,16 @@ function updateHeroSlide() {
 
 // ── INVENTORY DATA ──
 const inventory = [
-  { id: 1, brand: 'Apple', name: 'MacBook Air M2', price: 285000, desc: 'Incredibly thin and light MacBook Air with silent design.', images: ['https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80', 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Apple M2', RAM: '8GB Unified', Storage: '256GB SSD', Display: '13.6" Retina' } },
-  { id: 2, brand: 'Apple', name: 'MacBook Pro 14"', price: 460000, desc: 'The ultimate pro laptop featuring the M3 Pro chip.', images: ['https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80', 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Apple M3 Pro', RAM: '18GB Unified', Storage: '512GB SSD', Display: '14.2" XDR' } },
-  { id: 3, brand: 'Dell', name: 'Dell XPS 13 Plus', price: 340000, desc: 'Futuristic design with seamless glass touchpad.', images: ['https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80', 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Intel i7-1360P', RAM: '16GB LPDDR5', Storage: '512GB NVMe', Display: '13.4" Touch' } },
-  { id: 4, brand: 'ASUS', name: 'ROG Zephyrus', price: 395000, desc: 'Incredible gaming power in a portable chassis.', images: ['https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80', 'https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=800&q=80'], specs: { CPU: 'Ryzen 9 7940HS', RAM: '16GB DDR5', Storage: '1TB PCIe SSD', GPU: 'RTX 4060' } }
+  { id: 1, brand: 'Lenovo', name: 'Lenovo ThinkPad X1 Carbon (Sample)', price: 289000, desc: 'Business-focused premium ultrabook placeholder model with lightweight chassis.', images: ['https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80', 'https://images.unsplash.com/photo-1484788984921-03950022c9ef?auto=format&fit=crop&w=900&q=80'], specs: { CPU: 'Intel Core i7 (Sample)', RAM: '16GB', Storage: '512GB SSD', Display: '14" WUXGA', Battery: 'Up to 12 hrs' } },
+  { id: 2, brand: 'Lenovo', name: 'Lenovo IdeaPad Slim 5 (Sample)', price: 174000, desc: 'Everyday performance laptop sample for students and office use.', images: ['https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80', 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80'], specs: { CPU: 'AMD Ryzen 5 (Sample)', RAM: '8GB', Storage: '512GB SSD', Display: '15.6" FHD', Battery: 'Up to 10 hrs' } },
+  { id: 3, brand: 'HP', name: 'HP Spectre x360 14 (Sample)', price: 315000, desc: 'Premium convertible 2-in-1 sample with touchscreen and stylus-ready design.', images: ['https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=900&q=80', 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=900&q=80'], specs: { CPU: 'Intel Core i7 (Sample)', RAM: '16GB', Storage: '1TB SSD', Display: '13.5" OLED Touch', Battery: 'Up to 11 hrs' } },
+  { id: 4, brand: 'HP', name: 'HP Pavilion 15 (Sample)', price: 139000, desc: 'Balanced mid-range HP placeholder model for work and entertainment.', images: ['https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=900&q=80', 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=900&q=80'], specs: { CPU: 'Intel Core i5 (Sample)', RAM: '8GB', Storage: '512GB SSD', Display: '15.6" FHD', Battery: 'Up to 9 hrs' } },
+  { id: 5, brand: 'MacBook', name: 'MacBook Air 13 (Sample)', price: 299000, desc: 'Thin and silent MacBook sample model with long battery life.', images: ['https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=900&q=80', 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=900&q=80'], specs: { CPU: 'Apple Silicon (Sample)', RAM: '8GB Unified', Storage: '256GB SSD', Display: '13.6" Retina', Battery: 'Up to 18 hrs' } },
+  { id: 6, brand: 'MacBook', name: 'MacBook Pro 14 (Sample)', price: 459000, desc: 'Performance-focused MacBook sample model for creators and developers.', images: ['https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=900&q=80', 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=900&q=80'], specs: { CPU: 'Apple Pro Chip (Sample)', RAM: '18GB Unified', Storage: '512GB SSD', Display: '14.2" Liquid Retina XDR', Battery: 'Up to 17 hrs' } },
+  { id: 7, brand: 'Dell', name: 'Dell XPS 13 (Sample)', price: 329000, desc: 'High-end Dell placeholder ultrabook with premium build and display.', images: ['https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=900&q=80', 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=900&q=80'], specs: { CPU: 'Intel Core Ultra 7 (Sample)', RAM: '16GB', Storage: '512GB SSD', Display: '13.4" QHD+', Battery: 'Up to 11 hrs' } },
+  { id: 8, brand: 'Dell', name: 'Dell Inspiron 15 (Sample)', price: 128000, desc: 'Affordable Dell sample laptop for daily use and light productivity.', images: ['https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=900&q=80', 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80'], specs: { CPU: 'Intel Core i5 (Sample)', RAM: '8GB', Storage: '512GB SSD', Display: '15.6" FHD', Battery: 'Up to 8 hrs' } },
+  { id: 9, brand: 'Chromebook', name: 'Chromebook Plus 14 (Sample)', price: 99000, desc: 'Fast cloud-first Chromebook sample with clean, lightweight workflow.', images: ['https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80', 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=900&q=80'], specs: { CPU: 'Intel Core i3 (Sample)', RAM: '8GB', Storage: '128GB eMMC', Display: '14" FHD', Battery: 'Up to 12 hrs' } },
+  { id: 10, brand: 'Chromebook', name: 'Chromebook Flex 5 (Sample)', price: 112000, desc: 'Convertible Chromebook sample with touch support and 360° hinge.', images: ['https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=900&q=80', 'https://images.unsplash.com/photo-1522199710521-72d69614c702?auto=format&fit=crop&w=900&q=80'], specs: { CPU: 'Intel Core i5 (Sample)', RAM: '8GB', Storage: '256GB SSD', Display: '13.3" Touch FHD', Battery: 'Up to 10 hrs' } }
 ];
 
 let currentBrand = 'ALL';
